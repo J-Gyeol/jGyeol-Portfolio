@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — UI/UX Designer & Publisher</title>
+    <meta
+      name="description"
+      content="UI/UX 신입 디자이너·퍼블리셔 포트폴리오 — B/W &amp; Indie Green"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="site-header" role="banner">
+      <a class="site-logo" href="#home" aria-label="홈으로">Portfolio.</a>
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skill">Skill</a></li>
+          <li><a href="#project">Project</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="메뉴 열기"
+      >
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skill">Skill</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <main id="main">
+      <!-- Hero: 스크롤 시 1패널 → 2패널 전환 (GSAP ScrollTrigger) -->
+      <section class="hero-pinned" id="home" aria-label="히어로">
+        <div class="hero-panels">
+          <div class="hero-panel hero-panel--1">
+            <div class="hero-panel__bg hero-panel__bg--1" aria-hidden="true"></div>
+            <div class="hero-panel__inner hero-panel__inner--bottom">
+              <div class="hero-panel__copy">
+                <p class="hero-eyebrow">Made for you,</p>
+                <p class="hero-sub">HELLO I AM</p>
+                <h1 class="hero-title">HANEUL.</h1>
+              </div>
+              <a
+                class="hero-scroll-cue"
+                href="#about"
+                aria-label="아래로 스크롤하여 자기소개 보기"
+              >
+                <span class="hero-scroll-cue__label">Scroll</span>
+                <svg
+                  class="hero-scroll-cue__icon"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 5v14M12 19l-5-5M12 19l5-5"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-panel hero-panel--2" id="about">
+            <div class="hero-panel__bg hero-panel__bg--2" aria-hidden="true"></div>
+            <div class="hero-panel__inner hero-about">
+              <div class="hero-about__photo hero-reveal">
+                <figure class="about-photo">
+                  <img
+                    src="assets/images/about-profile.png"
+                    width="480"
+                    height="600"
+                    alt="프로필 사진"
+                    fetchpriority="high"
+                  />
+                </figure>
+              </div>
+              <div class="hero-about__content">
+                <h2 class="hero-about__title hero-reveal">
+                  <span class="hero-about__title-line">카피를 넘어선</span>
+                  <span class="hero-about__title-line">응용력</span>
+                </h2>
+                <div class="hero-about__body hero-reveal">
+                  <p>
+                    사용자의 맥락을 읽고, 화면 너머의 흐름까지 설계하는 UI/UX 디자이너입니다.
+                    레이아웃과 타이포그래피에 감각을 더해 정보를 명료하게 전달합니다.
+                  </p>
+                  <p>
+                    퍼블리싱 경험을 바탕으로 디자인과 개발 사이의 간극을 줄이고, 구현 가능한
+                    인터랙션과 일관된 시스템을 만드는 데 집중합니다.
+                  </p>
+                </div>
+                <ul class="hero-about__tags hero-reveal">
+                  <li>DETAIL ORIENTED</li>
+                  <li>SYSTEM THINKER</li>
+                  <li>VISUAL ARTISAN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skill 전: 풀뷰포트 홀로그램 (자연 스크롤 + scrub 모션) -->
+      <section class="skill-bridge" aria-label="Skill 영역 소개">
+        <div class="skill-bridge__media">
+          <div class="skill-bridge__bg js-skill-bridge-bg" aria-hidden="true"></div>
+        </div>
+        <div class="skill-bridge__inner">
+          <div class="skill-bridge__copy">
+            <div class="skill-bridge__row skill-bridge__row--left">
+              <p class="skill-bridge__line1 js-skill-bridge-line1">Made for you,</p>
+            </div>
+            <div class="skill-bridge__row skill-bridge__row--right">
+              <p class="skill-bridge__line2 js-skill-bridge-line2">Built by Crafters</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skill-section" id="skill" aria-labelledby="skill-heading">
+        <div class="skill-section__inner">
+          <header class="skill-section__head js-skill-head">
+            <p class="skill-section__kicker">Capability</p>
+            <h2 class="skill-section__title" id="skill-heading">SKILL</h2>
+          </header>
+
+          <div class="skill-matrix">
+            <article class="skill-tile skill-tile--wide" data-skill-tile>
+              <p class="skill-tile__eyebrow">Core Publishing</p>
+              <h3 class="skill-tile__name">HTML</h3>
+              <p class="skill-tile__desc">Semantic markup, accessibility, SEO structure</p>
+            </article>
+            <article class="skill-tile" data-skill-tile>
+              <p class="skill-tile__eyebrow">Styling</p>
+              <h3 class="skill-tile__name">CSS</h3>
+              <p class="skill-tile__desc">Responsive layout, design system, motion UI</p>
+            </article>
+            <article class="skill-tile" data-skill-tile>
+              <p class="skill-tile__eyebrow">Interaction</p>
+              <h3 class="skill-tile__name">JavaScript</h3>
+              <p class="skill-tile__desc">State interaction, UX micro-animation</p>
+            </article>
+            <article class="skill-tile skill-tile--accent" data-skill-tile>
+              <p class="skill-tile__eyebrow">Product Design</p>
+              <h3 class="skill-tile__name">Figma</h3>
+              <p class="skill-tile__desc">Component, auto layout, prototype</p>
+            </article>
+            <article class="skill-tile" data-skill-tile>
+              <p class="skill-tile__eyebrow">Visual</p>
+              <h3 class="skill-tile__name">Photoshop</h3>
+              <p class="skill-tile__desc">Image editing, key visual composition</p>
+            </article>
+            <article class="skill-tile" data-skill-tile>
+              <p class="skill-tile__eyebrow">Visual</p>
+              <h3 class="skill-tile__name">Illustrator</h3>
+              <p class="skill-tile__desc">Icon, vector asset, brand graphic</p>
+            </article>
+            <article class="skill-tile skill-tile--wide" data-skill-tile>
+              <p class="skill-tile__eyebrow">Motion</p>
+              <h3 class="skill-tile__name">GSAP / ScrollTrigger</h3>
+              <p class="skill-tile__desc">Pinned storytelling, scrub transition, sequence</p>
+            </article>
+            <article class="skill-tile" data-skill-tile>
+              <p class="skill-tile__eyebrow">AI Tool</p>
+              <h3 class="skill-tile__name">ChatGPT</h3>
+              <p class="skill-tile__desc">Copy draft, logic assist, QA scenario</p>
+            </article>
+            <article class="skill-tile" data-skill-tile>
+              <p class="skill-tile__eyebrow">AI Tool</p>
+              <h3 class="skill-tile__name">Midjourney</h3>
+              <p class="skill-tile__desc">Moodboard, concept visual exploration</p>
+            </article>
+            <article class="skill-tile skill-tile--accent" data-skill-tile>
+              <p class="skill-tile__eyebrow">AI Tool</p>
+              <h3 class="skill-tile__name">Claude</h3>
+              <p class="skill-tile__desc">Content refinement, structured documentation</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        class="work-section"
+        id="project"
+        aria-labelledby="work-heading"
+      >
+        <div class="work-section__sticky">
+          <div class="work-section__viewport-wrap">
+            <div class="work-section__line" aria-hidden="true"></div>
+            <div class="work-section__viewport">
+              <div class="work-section__track js-work-track">
+              <article class="work-card work-card--sq">
+                <a class="work-card__link" href="#" aria-label="Desert Drive 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/desertdrive/640/640"
+                      width="640"
+                      height="640"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Desert Drive</h3>
+                    <ul class="work-card__tags">
+                      <li>Photoshop</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--tall">
+                <a class="work-card__link" href="#" aria-label="Good Delivery 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/gooddelivery/520/780"
+                      width="520"
+                      height="780"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Good Delivery</h3>
+                    <ul class="work-card__tags">
+                      <li>Figma</li>
+                      <li>HTML</li>
+                      <li>SCSS</li>
+                      <li>jQuery</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--wide">
+                <a class="work-card__link" href="#" aria-label="Device UI Kit 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/deviceui/960/520"
+                      width="960"
+                      height="520"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Device UI Kit</h3>
+                    <ul class="work-card__tags">
+                      <li>Illustrator</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>GSAP</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--tall work-card--tall-sm">
+                <a class="work-card__link" href="#" aria-label="Blue Horizon 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/bluehorizon/520/760"
+                      width="520"
+                      height="760"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Blue Horizon</h3>
+                    <ul class="work-card__tags">
+                      <li>Photoshop</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--sq">
+                <a class="work-card__link" href="#" aria-label="Nora M 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/noram/640/640"
+                      width="640"
+                      height="640"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Nora M</h3>
+                    <ul class="work-card__tags">
+                      <li>Figma</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>JS</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--wide">
+                <a class="work-card__link" href="#" aria-label="Studio Bloom 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/studiobloom/920/500"
+                      width="920"
+                      height="500"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Studio Bloom</h3>
+                    <ul class="work-card__tags">
+                      <li>Photoshop</li>
+                      <li>HTML</li>
+                      <li>SCSS</li>
+                      <li>GSAP</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--tall">
+                <a class="work-card__link" href="#" aria-label="Mono Type 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/monotype/500/800"
+                      width="500"
+                      height="800"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">Mono Type</h3>
+                    <ul class="work-card__tags">
+                      <li>Illustrator</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+
+              <article class="work-card work-card--tall work-card--tall-sm">
+                <a class="work-card__link" href="#" aria-label="River Run 프로젝트 상세 보기">
+                  <div class="work-card__media">
+                    <img
+                      src="https://picsum.photos/seed/riverrun/520/740"
+                      width="520"
+                      height="740"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-card__overlay">
+                    <h3 class="work-card__title">River Run</h3>
+                    <ul class="work-card__tags">
+                      <li>Figma</li>
+                      <li>HTML</li>
+                      <li>jQuery</li>
+                      <li>PHP</li>
+                    </ul>
+                    <span class="work-card__cta">View more</span>
+                  </div>
+                </a>
+              </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-section__intro">
+            <header class="work-section__head">
+              <p class="work-section__kicker">Portfolio</p>
+              <div class="work-section__title-row">
+                <h2 class="work-section__title" id="work-heading">WORK</h2>
+                <details class="work-section__more">
+                  <summary class="work-section__more-btn">
+                    <span class="visually-hidden">프로젝트 소개 추가 보기</span>
+                    <span class="work-section__more-icon" aria-hidden="true">+</span>
+                  </summary>
+                </details>
+                <p class="work-section__more-text">
+                  브랜드·서비스 맥락에 맞춘 UI 설계와 퍼블리싱으로 완성한 결과물입니다. 카드를 눌러 상세
+                  페이지로 이동할 수 있습니다.
+                </p>
+              </div>
+            </header>
+            <p class="work-section__lead">
+              디자인과 코드를 아우르는 포트폴리오 모음입니다. 스크롤에 따라 작업물을 차례로 살펴보세요.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+        <div class="contact-section__inner">
+          <header class="contact-section__head">
+            <p class="contact-section__kicker">Contact</p>
+            <div class="contact-section__title-row">
+              <h2 class="contact-section__title" id="contact-heading">똑똑, 함께 일할 사람을 찾고 계신가요?</h2>
+              <p class="contact-section__welcome" aria-live="polite">메일은 언제든 환영합니다!</p>
+            </div>
+          </header>
+
+          <p class="contact-section__email-wrap">
+            <a class="contact-section__email-link" href="mailto:nykim@nykim.net">nykim@nykim.net</a>
+          </p>
+
+          <div class="contact-section__details">
+            <p class="contact-section__text">
+              역량과 경험을 갖춘 웹 퍼블리셔를 찾고 계신가요? 합류 및 협업 제안이 있으시다면 언제든지 연락해
+              주세요! 함께 할 멋진 일에 대해 메일을 보내주시면 1~2일 내로 답장을 드릴게요.
+            </p>
+            <p class="contact-section__text">
+              또는 저와 나누고 싶은 얘기가 있으신가요? 포트폴리오나 개발과 관련이 없는 내용이어도 좋아요.
+              궁금한 내용이 있다면 편하게 말씀해 주세요 :)
+            </p>
+            <a class="contact-section__mail-cta" href="mailto:nykim@nykim.net">메일 보내기</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer" aria-label="푸터">
+      <div class="site-footer__inner">
+        <div class="site-footer__left">
+          <p class="site-footer__label">Github from</p>
+          <a class="site-footer__link" href="https://github.com/J-Gyeol" target="_blank" rel="noopener noreferrer">
+            https://github.com/J-Gyeol
+          </a>
+        </div>
+        <div class="site-footer__center">
+          <p class="site-footer__madeby">Made by Haneul with</p>
+          <p class="site-footer__copy">(C) 2026 Portfolio</p>
+        </div>
+        <div class="site-footer__spacer" aria-hidden="true"></div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
