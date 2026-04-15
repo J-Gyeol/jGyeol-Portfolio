@@ -62,39 +62,100 @@
     });
   }
 
-  function initMobileNav() {
-    var $body = $("body");
-    var $toggle = $(".nav-toggle");
-    var $panel = $("#mobile-nav");
+  /** 실제 헤더 바 높이 → --header-h (고정 px와 불일치로 생기는 메뉴·딤 간격 제거) */
+  function initHeaderHeight() {
+    var bar = document.querySelector(".site-header--bar");
+    if (!bar) return;
 
-    $toggle.on("click", function () {
-      var open = !$body.hasClass("nav-open");
-      $body.toggleClass("nav-open", open);
+    function sync() {
+      var h = bar.getBoundingClientRect().height;
+      if (!h) return;
+      document.documentElement.style.setProperty("--header-h", Math.round(h * 100) / 100 + "px");
+    }
+
+    sync();
+    requestAnimationFrame(function () {
+      requestAnimationFrame(sync);
+    });
+
+    if (typeof ResizeObserver !== "undefined") {
+      var ro = new ResizeObserver(sync);
+      ro.observe(bar);
+    }
+
+    $(window).on("resize.headerH", sync);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(sync).catch(sync);
+    }
+  }
+
+  function getHeaderScrollOffset() {
+    var raw = getComputedStyle(document.documentElement).getPropertyValue("--header-h");
+    var n = parseFloat(raw);
+    if (isNaN(n)) return -64;
+    return -Math.ceil(n);
+  }
+
+  function initSiteMenu() {
+    var $body = $("body");
+    var $wrap = $(".site-header-wrap");
+    var $toggle = $("#site-menu-trigger");
+    var $panel = $("#site-menu-panel");
+    var $backdrop = $("#site-menu-backdrop");
+
+    if (!$toggle.length || !$panel.length) return;
+
+    function setOpen(open) {
+      $body.toggleClass("site-menu-open", open);
+      if ($wrap.length) {
+        $wrap.toggleClass("site-header-wrap--open", open);
+      }
       $toggle.attr("aria-expanded", open);
-      $toggle.attr("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
       $panel.prop("hidden", !open);
+      if ($backdrop.length) {
+        $backdrop.prop("hidden", !open);
+      }
+
+      window.setTimeout(function () {
+        window.dispatchEvent(new Event("resize"));
+      }, 0);
+    }
+
+    $toggle.on("click", function (e) {
+      e.stopPropagation();
+      setOpen(!$body.hasClass("site-menu-open"));
+    });
+
+    $backdrop.on("click", function () {
+      setOpen(false);
     });
 
     $panel.find("a").on("click", function () {
-      $body.removeClass("nav-open");
-      $toggle.attr("aria-expanded", false);
-      $toggle.attr("aria-label", "메뉴 열기");
-      $panel.prop("hidden", true);
+      setOpen(false);
+    });
+
+    $(document).on("keydown.siteMenu", function (e) {
+      if (e.key === "Escape" && $body.hasClass("site-menu-open")) {
+        setOpen(false);
+      }
     });
   }
 
-  /** About 패널(히어로 2)·Work 섹션 등 밝은 배경에서 헤더 대비 확보 */
+  /** About 패널·Work 등 밝은 배경에서 헤더 텍스트·보더 톤 전환 */
   function initHeaderLightTheme() {
     if (!window.IntersectionObserver) return;
     var panel2 = document.querySelector(".hero-panel--2");
     var work = document.querySelector(".work-section");
-    var $header = $(".site-header");
+    var $wrap = $(".site-header-wrap");
+    if (!$wrap.length) return;
     if (!panel2 && !work) return;
 
     var flags = { about: false, work: false };
 
     function sync() {
-      $header.toggleClass("site-header--on-light", flags.about || flags.work);
+      var onLight = flags.about || flags.work;
+      $wrap.toggleClass("site-header--on-light", onLight);
+      document.documentElement.classList.toggle("site-scroll--light", onLight);
     }
 
     if (panel2) {
@@ -139,11 +200,18 @@
     var title = ".hero-about__title.hero-reveal";
     var body = ".hero-about__body.hero-reveal";
     var tags = ".hero-about__tags.hero-reveal";
+    var isAboutColumnLayout = window.matchMedia("(max-width: 768px)").matches;
 
     gsap.set(panel2, { yPercent: 100 });
-    gsap.set(photo, { opacity: 0, x: -52 });
-    gsap.set([title, body], { opacity: 0, x: 44 });
-    gsap.set(tags, { opacity: 0, y: 28 });
+    if (isAboutColumnLayout) {
+      gsap.set(photo, { opacity: 0, y: 56 });
+      gsap.set([title, body], { opacity: 0, y: 46 });
+      gsap.set(tags, { opacity: 0, y: 32 });
+    } else {
+      gsap.set(photo, { opacity: 0, x: -52 });
+      gsap.set([title, body], { opacity: 0, x: 44 });
+      gsap.set(tags, { opacity: 0, y: 28 });
+    }
 
     var tl = gsap.timeline({
       defaults: { ease: "none" },
@@ -164,17 +232,23 @@
       .to(panel2, { yPercent: 0, duration: 1 }, 0)
       .to(
         photo,
-        { opacity: 1, x: 0, duration: 0.52, ease: "power2.out" },
+        isAboutColumnLayout
+          ? { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }
+          : { opacity: 1, x: 0, duration: 0.52, ease: "power2.out" },
         0.38
       )
       .to(
         title,
-        { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
+        isAboutColumnLayout
+          ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
+          : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
         0.44
       )
       .to(
         body,
-        { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
+        isAboutColumnLayout
+          ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
+          : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
         0.5
       )
       .to(
@@ -182,6 +256,30 @@
         { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" },
         0.56
       );
+  }
+
+  /** Hero 1st panel title: fade up on initial load */
+  function initHeroTitleFadeUp() {
+    var heroTitle = document.querySelector(".hero-panel--1 .hero-title");
+    if (!heroTitle) return;
+
+    if (prefersReducedMotion) {
+      gsap.set(heroTitle, { clearProps: "all" });
+      return;
+    }
+
+    gsap.fromTo(
+      heroTitle,
+      { opacity: 0, y: 34 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.12,
+        ease: "power2.out",
+        overwrite: "auto",
+      }
+    );
   }
 
   function initSkillBridgeParallax() {
@@ -270,21 +368,206 @@
       );
     }
 
-    bindScrubReveal(".skill-section", ".js-skill-head, .skill-matrix > *", {
+    bindScrubReveal(".skill-section", ".js-skill-head", {
       start: "top 96%",
       end: "top 28%",
     });
   }
 
-  function initSkillCardHover() {
-    if (prefersReducedMotion) return;
-    $(".skill-tile").each(function () {
-      var el = this;
-      $(el).on("mouseenter", function () {
-        gsap.to(el, { scale: 1.02, duration: 0.35, ease: "power2.out" });
+  /** Skill: 2열 한 행씩 동시 등장 (좌/우 컬럼 함께 리빌) */
+  function initSkillRowsRise() {
+    var items = gsap.utils.toArray(".js-skill-lists .skill-reveal-item");
+    if (!items.length) return;
+
+    var rowGroups = [];
+    for (var i = 0; i < items.length; i += 2) {
+      rowGroups.push(items.slice(i, i + 2));
+    }
+
+    rowGroups.forEach(function (group) {
+      if (!group.length) return;
+      if (prefersReducedMotion) {
+        group.forEach(function (el) {
+          el.classList.add("is-inview");
+        });
+        return;
+      }
+
+      ScrollTrigger.create({
+        trigger: group[0],
+        start: "top 92%",
+        onEnter: function () {
+          group.forEach(function (el) {
+            el.classList.add("is-inview");
+          });
+        },
+        onEnterBack: function () {
+          group.forEach(function (el) {
+            el.classList.add("is-inview");
+          });
+        },
       });
-      $(el).on("mouseleave", function () {
-        gsap.to(el, { scale: 1, duration: 0.35, ease: "power2.out" });
+    });
+
+    // Skill 섹션을 완전히 벗어나면 상태 리셋 → 재진입 시 다시 리빌
+    ScrollTrigger.create({
+      trigger: ".skill-section",
+      start: "top bottom",
+      end: "bottom top",
+      onLeave: function () {
+        items.forEach(function (el) {
+          el.classList.remove("is-inview");
+        });
+      },
+      onLeaveBack: function () {
+        items.forEach(function (el) {
+          el.classList.remove("is-inview");
+        });
+      },
+    });
+  }
+
+  /** Skill: 행이 뷰포트에 들어올 때 프로그레스바 0% → 목표% */
+  function initSkillProgressBars() {
+    var section = document.querySelector(".skill-section");
+    if (!section) return;
+
+    var rows = section.querySelectorAll(".skill-row[data-skill-level]");
+    if (!rows.length) return;
+
+    rows.forEach(function (row) {
+      var fill = row.querySelector(".js-skill-fill");
+      if (!fill) return;
+
+      var raw = row.getAttribute("data-skill-level");
+      var level = parseFloat(raw, 10);
+      if (isNaN(level)) level = 0;
+      level = Math.max(0, Math.min(100, level));
+
+      gsap.set(fill, { width: "0%" });
+
+      if (prefersReducedMotion) {
+        gsap.set(fill, { width: level + "%" });
+        return;
+      }
+
+      var tween = gsap.to(fill, {
+        width: level + "%",
+        duration: 1.2,
+        ease: "sine.out",
+        paused: true,
+      });
+
+      ScrollTrigger.create({
+        trigger: row,
+        start: "top 88%",
+        onEnter: function () {
+          gsap.set(fill, { width: "0%" });
+          tween.restart();
+        },
+        onEnterBack: function () {
+          gsap.set(fill, { width: "0%" });
+          tween.restart();
+        },
+      });
+    });
+
+    // Skill 섹션을 완전히 벗어나면 게이지 초기화
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom",
+      end: "bottom top",
+      onLeave: function () {
+        rows.forEach(function (row) {
+          var fill = row.querySelector(".js-skill-fill");
+          if (fill) gsap.set(fill, { width: "0%" });
+        });
+      },
+      onLeaveBack: function () {
+        rows.forEach(function (row) {
+          var fill = row.querySelector(".js-skill-fill");
+          if (fill) gsap.set(fill, { width: "0%" });
+        });
+      },
+    });
+  }
+
+  function splitTextToChars(el, charClass, readyKey) {
+    if (!el) return [];
+    if (el.dataset[readyKey] === "true") {
+      return el.querySelectorAll("." + charClass);
+    }
+
+    var raw = (el.textContent || "").trim();
+    if (!raw) return [];
+    el.dataset[readyKey] = "true";
+
+    el.textContent = "";
+    var sr = document.createElement("span");
+    sr.className = "visually-hidden";
+    sr.textContent = raw;
+    el.appendChild(sr);
+
+    var frag = document.createDocumentFragment();
+    raw.split("").forEach(function (ch) {
+      var span = document.createElement("span");
+      span.className = charClass;
+      span.setAttribute("aria-hidden", "true");
+      span.textContent = ch;
+      frag.appendChild(span);
+    });
+    el.appendChild(frag);
+    return el.querySelectorAll("." + charClass);
+  }
+
+  /** WORK / SKILL 타이틀: Contact 이메일과 유사한 문자 단위 웨이브 */
+  function initSectionTitleCharAnimations() {
+    if (prefersReducedMotion) return;
+
+    var titleConfigs = [
+      {
+        el: document.querySelector("#work-heading"),
+        trigger: ".work-section",
+        start: "top 86%",
+        onEnterBack: false,
+      },
+      {
+        el: document.querySelector("#skill-heading"),
+        trigger: ".skill-section",
+        start: "top 88%",
+        onEnterBack: true,
+      },
+    ];
+
+    titleConfigs.forEach(function (cfg) {
+      if (!cfg.el) return;
+      var chars = splitTextToChars(cfg.el, "section-title__char", "splitTitleReady");
+      if (!chars.length) return;
+
+      gsap.set(chars, { yPercent: 112, opacity: 0 });
+
+      var tl = gsap.timeline({ paused: true });
+      tl.to(chars, {
+        keyframes: [
+          { yPercent: 112, opacity: 0, duration: 0 },
+          { yPercent: -18, opacity: 1, duration: 0.34, ease: "power2.out" },
+          { yPercent: 0, opacity: 1, duration: 0.28, ease: "power2.inOut" },
+        ],
+        stagger: 0.034,
+      });
+
+      ScrollTrigger.create({
+        trigger: cfg.trigger,
+        start: cfg.start,
+        onEnter: function () {
+          gsap.set(chars, { yPercent: 112, opacity: 0 });
+          tl.restart();
+        },
+        onEnterBack: function () {
+          if (cfg.onEnterBack === false) return;
+          gsap.set(chars, { yPercent: 112, opacity: 0 });
+          tl.restart();
+        },
       });
     });
   }
@@ -325,11 +608,24 @@
 
     var chars = email.querySelectorAll(".contact-section__email-char");
     if (!chars.length) return;
+    function isTabletOrDown() {
+      return window.matchMedia("(max-width: 900px)").matches;
+    }
 
     gsap.set([kicker, titleRow].filter(Boolean), { y: 34, opacity: 0 });
     gsap.set(chars, { yPercent: 112, opacity: 0 });
     gsap.set(texts, { y: 34, opacity: 0 });
-    if (cta) gsap.set(cta, { x: -34, opacity: 0 });
+    if (cta) {
+      gsap.set(cta, {
+        x: function () {
+          return isTabletOrDown() ? 0 : -34;
+        },
+        y: function () {
+          return isTabletOrDown() ? 34 : 0;
+        },
+        opacity: 0,
+      });
+    }
 
     var tl = gsap.timeline({
       scrollTrigger: {
@@ -376,6 +672,7 @@
         cta,
         {
           x: 0,
+          y: 0,
           opacity: 1,
           duration: 0.5,
           ease: "power2.out",
@@ -385,16 +682,66 @@
     }
   }
 
+  /** Contact 톤을 가져온 절제된 리빌 (Work intro / Footer) */
+  function initSubtleContentReveals() {
+    if (prefersReducedMotion) return;
+
+    var footerTitles = gsap.utils.toArray(".site-footer__label, .site-footer__madeby");
+    var footerBodies = gsap.utils.toArray(".site-footer__link, .site-footer__copy");
+    if (footerTitles.length || footerBodies.length) {
+      gsap.set(footerTitles, { y: 28, opacity: 0 });
+      gsap.set(footerBodies, { y: 28, opacity: 0 });
+
+      var footerTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".site-footer",
+          start: "top 96%",
+          toggleActions: "play none none reset",
+          invalidateOnRefresh: true,
+        },
+      });
+
+      footerTl.to(footerTitles, {
+        keyframes: [
+          { y: 28, opacity: 0, duration: 0 },
+          { y: -6, opacity: 1, duration: 0.3, ease: "power2.out" },
+          { y: 0, opacity: 1, duration: 0.22, ease: "power2.inOut" },
+        ],
+        stagger: 0.06,
+      }).to(
+        footerBodies,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.45,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "-=0.1"
+      );
+    }
+  }
+
   /** Work: 세로 스크롤 시 섹션 핀 + 카드 트랙 가로 이동 */
   function initWorkHorizontalScroll() {
+    var WORK_END_EXTRA = 18;
+
     if (prefersReducedMotion) return;
     var section = document.querySelector(".work-section");
     var track = document.querySelector(".js-work-track");
     var viewport = document.querySelector(".work-section__viewport");
     if (!section || !track || !viewport) return;
 
+    function viewportLeadInset() {
+      var styles = getComputedStyle(viewport);
+      var leftPad = parseFloat(styles.paddingLeft || "0");
+      if (isNaN(leftPad)) leftPad = 0;
+      return leftPad;
+    }
+
     function maxShift() {
-      return Math.max(0, track.scrollWidth - viewport.offsetWidth);
+      // 마지막 카드가 완전히 보일 때까지 이동량 보정
+      return Math.max(0, track.scrollWidth - viewport.offsetWidth + viewportLeadInset() + WORK_END_EXTRA);
     }
 
     function verticalScrollForPin() {
@@ -402,7 +749,7 @@
       return ms > 0 ? ms : 400;
     }
 
-    gsap.to(track, {
+    var trackTween = gsap.to(track, {
       x: function () {
         return -maxShift();
       },
@@ -421,6 +768,22 @@
         refreshPriority: -1,
       },
     });
+
+    gsap.fromTo(
+      viewport,
+      { x: 180 },
+      {
+        x: 0,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 92%",
+          end: "top 62%",
+          scrub: 0.85,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
 
     track.querySelectorAll("img").forEach(function (img) {
       if (img.complete) return;
@@ -441,18 +804,61 @@
     });
   }
 
+  /** 마우스 오브: ypine 감성(심플/부드러운 추적), 감도는 약간 빠르게 */
+  function initMouseOrbEffect() {
+    if (prefersReducedMotion) return;
+    if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
+
+    var orb = document.getElementById("mouse-orb");
+    var core = document.getElementById("mouse-orb-core");
+    if (!orb || !core) return;
+
+    document.body.classList.add("has-mouse-orb");
+
+    function move(e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      // 실제 포인터와 체감 차이가 거의 없도록 즉시 동기화
+      orb.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+      core.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+      document.body.classList.add("mouse-orb-active");
+    }
+
+    document.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseenter", function () {
+      document.body.classList.add("mouse-orb-active");
+    });
+    document.addEventListener("mouseleave", function () {
+      document.body.classList.remove("mouse-orb-active");
+      document.body.classList.remove("mouse-orb-hover");
+    });
+
+    document.addEventListener("mouseover", function (e) {
+      var hit = e.target.closest(
+        'a, button, [role="button"], summary, .site-menu__link, .work-card__link, .contact-section__mail-cta'
+      );
+      document.body.classList.toggle("mouse-orb-hover", !!hit);
+    });
+  }
+
   $(function () {
     var lenis = initLenis();
 
     initAOS();
-    initMobileNav();
-    initHeroScroll();
+    initMouseOrbEffect();
+    initHeaderHeight();
+    initSiteMenu();
     initHeaderLightTheme();
+    initHeroTitleFadeUp();
+    initHeroScroll();
     initSkillBridgeParallax();
     initWorkHorizontalScroll();
     initSmoothScrollSections();
-    initSkillCardHover();
+    initSectionTitleCharAnimations();
+    initSkillRowsRise();
+    initSkillProgressBars();
     initContactAnimations();
+    initSubtleContentReveals();
     initSwiperPlaceholder();
 
     function afterLayoutRefresh() {
@@ -500,11 +906,19 @@
       $(document).on("click", 'a[href^="#"]:not(.skip-link)', function (e) {
         var id = this.getAttribute("href");
         if (!id || id === "#") return;
+        if (id === "#home") {
+          e.preventDefault();
+          lenis.scrollTo(0, {
+            offset: 0,
+            duration: 1.05,
+          });
+          return;
+        }
         var target = document.querySelector(id);
         if (!target) return;
         e.preventDefault();
         lenis.scrollTo(target, {
-          offset: -76,
+          offset: getHeaderScrollOffset(),
           duration: 1.15,
         });
       });
