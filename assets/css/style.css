@@ -681,6 +681,45 @@ body.site-menu-open {
   width: 100%;
 }
 
+/* Tablet/Mobile: hero 패널 고정 높이 해제 (본문 잘림 방지) */
+@media (max-width: 900px) {
+  .hero-pinned {
+    height: auto;
+    overflow: visible;
+  }
+
+  .hero-panels {
+    height: auto;
+  }
+
+  .hero-panel {
+    position: relative;
+    height: auto;
+    min-height: 0;
+  }
+
+  .hero-panel--1 {
+    height: 100vh;
+  }
+  .hero-panel--2 {
+    z-index: 2;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-panel--2 {
+    padding-top: 3rem;
+    padding-bottom: 8rem;
+  }
+}
+@media (max-width: 414px) {
+  .hero-panel--2 {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+  }
+}
+
 .hero-eyebrow {
   margin: 0 0 0.35rem;
   font-family: var(--font-en);
@@ -1021,7 +1060,8 @@ body.site-menu-open {
   min-height: 40vh;
   min-height: 40dvh;
   margin: 0;
-  padding: 0;
+  padding-inline: clamp(0.75rem, 3vw, 2rem);
+  padding-bottom: clamp(0.75rem, 2.5vh, 1.25rem);
   overflow: hidden;
 }
 
@@ -1079,6 +1119,30 @@ body.site-menu-open {
   text-align: right;
   font-size: clamp(3.75rem, 14vw, 11rem);
   font-weight: 700;
+}
+
+/* PC: 섹션 높이·여백 확보 — 두 번째 줄 가로·세로 클리핑 완화 */
+@media (min-width: 768px) {
+  .skill-bridge {
+    min-height: 56vh;
+    min-height: 56dvh;
+  }
+
+  .skill-bridge__inner {
+    min-height: 56vh;
+    min-height: 56dvh;
+    padding: clamp(1.75rem, 5vh, 3.25rem) clamp(1.5rem, 4vw, 3rem)
+      clamp(2rem, 5.5vh, 3.5rem);
+  }
+
+  .skill-bridge__copy {
+    gap: clamp(0.35rem, 1.5vh, 0.75rem);
+  }
+
+  .skill-bridge__line1,
+  .skill-bridge__line2 {
+    line-height: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1207,14 +1271,36 @@ body.site-menu-open {
   border-radius: 4px;
   pointer-events: none;
   background-color: transparent;
-  transition: background-color 0.45s var(--skill-ease);
+  overflow: hidden;
+}
+
+.skill-row__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--skill-hover-bg);
+  border-radius: 4px;
+  -webkit-transform: perspective(1000px) rotateX(90deg);
+  transform: perspective(1000px) rotateX(90deg);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.2, 0, 0.15, 1);
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.15, 1);
 }
 
 @media (hover: hover) {
 
   .skill-row:hover .skill-row__bg,
   .skill-row:focus-within .skill-row__bg {
-    background-color: var(--skill-hover-bg);
+    background-color: transparent;
+  }
+
+  .skill-row:hover .skill-row__bg::before,
+  .skill-row:focus-within .skill-row__bg::before {
+    -webkit-transform: perspective(1000px) rotateX(0deg);
+    transform: perspective(1000px) rotateX(0deg);
   }
 }
 
@@ -1222,7 +1308,13 @@ body.site-menu-open {
 
   .skill-row:active .skill-row__bg,
   .skill-row:focus-within .skill-row__bg {
-    background-color: var(--skill-hover-bg);
+    background-color: transparent;
+  }
+
+  .skill-row:active .skill-row__bg::before,
+  .skill-row:focus-within .skill-row__bg::before {
+    -webkit-transform: perspective(1000px) rotateX(0deg);
+    transform: perspective(1000px) rotateX(0deg);
   }
 }
 
@@ -1230,7 +1322,15 @@ body.site-menu-open {
 
   .skill-row:hover .skill-row__bg,
   .skill-row:focus-within .skill-row__bg {
-    background-color: var(--skill-hover-bg);
+    background-color: transparent;
+  }
+
+  .skill-row:hover .skill-row__bg::before,
+  .skill-row:focus-within .skill-row__bg::before {
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transform: perspective(1000px) rotateX(0deg);
+    transform: perspective(1000px) rotateX(0deg);
   }
 }
 
@@ -1667,8 +1767,8 @@ body.site-menu-open {
   z-index: 2;
   flex-shrink: 0;
   max-width: min(1200px, 100%);
-  margin-top: clamp(1.25rem, 3vw, 2rem);
-  padding-top: 0.35rem;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  padding-top: clamp(1.4rem, 3.4vw, 2.4rem);
   padding-left: max(0px, calc((100% - 1200px) / 2));
   box-sizing: border-box;
 }

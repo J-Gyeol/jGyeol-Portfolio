@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이젠신경외과 — Work Detail | jGyeol Portfolio</title>
+    <meta
+      name="description"
+      content="이젠신경외과 반응형 랜딩 페이지 — 기획 의도, 구현 방식, 사용 툴을 정리한 작업 상세입니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="css/neurosurgery.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("neurosurgery-theme");
+          document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="ns-header js-ns-header" role="banner">
+      <div class="ns-header__inner">
+        <a class="ns-header__brand" href="../index.html#project">jGyeol's Portfolio.</a>
+        <div class="ns-header__actions">
+          <a class="ns-header__link" href="../index.html#project">← Work</a>
+          <a class="ns-header__cta" href="https://j-gyeol.github.io/Landing-Page/" target="_blank" rel="noopener noreferrer">Live site</a>
+          <button type="button" class="ns-theme-toggle js-ns-theme-toggle" aria-pressed="false" aria-label="다크 모드로 전환" title="다크 모드">
+            <svg class="ns-theme-toggle__icon ns-theme-toggle__icon--moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+            <svg class="ns-theme-toggle__icon ns-theme-toggle__icon--sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="ns-main">
+      <div class="ns-shell">
+        <article class="ns-article">
+          <header class="ns-reveal js-ns-reveal js-ns-article-header">
+            <p class="ns-kicker">Work Detail</p>
+            <h1 class="ns-title">이젠신경외과 랜딩 페이지</h1>
+            <p class="ns-lead">신경·척추 클리닉을 소개하는 원페이지형 랜딩으로, 진료 영역·장비·후기·예약까지 한 흐름에서 전달되도록 구성했습니다.</p>
+            <div class="ns-hero-actions">
+              <a class="ns-btn" href="https://j-gyeol.github.io/Landing-Page/" target="_blank" rel="noopener noreferrer">라이브 사이트 보기</a>
+              <a class="ns-btn ns-btn--ghost" href="https://www.figma.com/design/CI7PLjcPksXcgNJvkplSyo/%EB%B3%91%EC%9B%90-%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80?node-id=0-1&t=5q2L3IYQBfM3qBnR-1" target="_blank" rel="noopener noreferrer" aria-label="피그마 디자인 열기">
+                <svg width="16" height="16" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M9.5 57C14.7467 57 19 52.7467 19 47.5V38H9.5C4.25329 38 0 42.2533 0 47.5C0 52.7467 4.25329 57 9.5 57Z" fill="#0ACF83"/>
+                  <path d="M0 28.5C0 23.2533 4.25329 19 9.5 19H19V38H9.5C4.25329 38 0 33.7467 0 28.5Z" fill="#A259FF"/>
+                  <path d="M0 9.5C0 4.25329 4.25329 0 9.5 0H19V19H9.5C4.25329 19 0 14.7467 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M19 0H28.5C33.7467 0 38 4.25329 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"/>
+                  <path d="M38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5Z" fill="#1ABCFE"/>
+                </svg>
+                Figma 보기
+              </a>
+            </div>
+          </header>
+
+          <div class="ns-meta ns-reveal js-ns-reveal">
+            <div class="ns-meta__row"><strong>Role</strong><span>기획 · 디자인 · 퍼블리싱</span></div>
+            <div class="ns-meta__row"><strong>Output</strong><span>반응형 원페이지 웹 (랜딩)</span></div>
+            <div class="ns-meta__row"><strong>Link</strong><a class="ns-inline-link" href="https://j-gyeol.github.io/Landing-Page/" target="_blank" rel="noopener noreferrer">j-gyeol.github.io/Landing-Page</a></div>
+            <ul class="ns-tags"><li>Figma</li><li>HTML / CSS</li><li>jQuery</li><li>Responsive</li></ul>
+          </div>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="ns-overview">
+            <h2 id="ns-overview">프로젝트 개요</h2>
+            <p>실제 병원이 아닌 포트폴리오용 시안을 바탕으로, 의료기관 랜딩에서 요구되는 <strong class="ns-strong">신뢰감·가독성·문의 전환</strong>을 목표로 제작했습니다. 히어로부터 질환 안내, 장비 소개, 의료진·환자 후기, 예약 폼까지 스크롤 하나로 이어지는 구조입니다.</p>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="ns-plan">
+            <h2 id="ns-plan">기획 의도</h2>
+            <p>방문자가 빠르게 <em class="ns-em">진료 철학과 강점</em>을 이해하고, 불필요한 장식 없이 정보를 얻도록 섹션 순서와 카피 흐름을 잡았습니다.</p>
+            <ul class="ns-list">
+              <li>첫 화면에서 병원 정체성과 핵심 메시지를 명확히 전달</li>
+              <li>질환·장비·후기로 신뢰를 쌓은 뒤 예약 폼으로 자연스럽게 연결</li>
+              <li>반복되는 섹션 리듬으로 스크롤 피로를 줄임</li>
+            </ul>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="ns-impl">
+            <h2 id="ns-impl">구현 방식</h2>
+            <p>시맨틱한 HTML 골격 위에 유지보수하기 쉬운 CSS 구조를 두었고, 인터랙션은 <strong class="ns-strong">jQuery</strong>로 슬라이드·탭·모달 동작을 분리해 작성했습니다.</p>
+            <ul class="ns-list">
+              <li>반복되는 카드·그리드 패턴을 재사용 가능한 형태로 마크업</li>
+              <li>이미지/로고 대비와 의미 있는 alt 텍스트 반영</li>
+              <li>폼 라벨·동의 체크 등 기본 접근성 고려</li>
+            </ul>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="ns-tools">
+            <h2 id="ns-tools">사용 툴</h2>
+            <p>협업·시각 작업과 코드 작성에 사용한 도구입니다.</p>
+            <div class="ns-tools">
+              <span class="ns-tool">Figma</span><span class="ns-tool">VS Code</span><span class="ns-tool">HTML5</span><span class="ns-tool">CSS3</span><span class="ns-tool">jQuery</span><span class="ns-tool">Git / GitHub</span>
+            </div>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="ns-shot">
+            <h2 id="ns-shot">작업물 미리보기</h2>
+            <p>실제 화면은 라이브 링크에서 확인하실 수 있습니다. 아래는 메인 히어로와 질환 안내(아코디언) 구역의 화면을 발췌한 것입니다.</p>
+            <figure class="ns-shot">
+              <img src="../assets/images/logo-company-1-hero.png" width="560" height="120" alt="이젠신경외과 랜딩 히어로" loading="lazy" decoding="async" />
+              <figcaption>메인 히어로: 의료진·MRI 장비 배경 위에 핵심 카피와 슬라이더 인디케이터로 전문성을 강조</figcaption>
+            </figure>
+            <figure class="ns-shot">
+              <img src="../assets/images/logo-company-1-process.png" width="560" height="120" alt="이젠신경외과 랜딩 MEDICAL SOLUTION 아코디언" loading="lazy" decoding="async" />
+              <figcaption>MEDICAL SOLUTION: 질환별 아코디언으로 최소 치료 원칙과 시술 안내를 단계적으로 노출</figcaption>
+            </figure>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="ns-reflect">
+            <h2 id="ns-reflect">회고</h2>
+            <p>의료 랜딩은 정보 밀도가 높아질수록 시각적 무게를 줄이는 일이 중요했습니다. 디자인 시스템을 전제로 한 컴포넌트 단위 사고를 퍼블리싱에도 적용하며 이후 수정·확장 시에도 읽히는 구조를 만드는 데 집중했습니다.</p>
+          </section>
+
+          <section class="ns-section ns-next ns-reveal js-ns-reveal" aria-labelledby="ns-next-heading">
+            <h2 id="ns-next-heading">Next</h2>
+            <ul class="ns-next__list">
+              <li class="ns-next__item ns-next__item--current">
+                <span class="ns-next__current" aria-current="page">이젠신경외과</span>
+              </li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../dn-publishment/index.html">도서출판 다운</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">BlueBuddy</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">노랑풍선</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">NETFLIX</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">PLANET</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">INVEST</a></li>
+            </ul>
+            <p class="ns-next__back"><a class="ns-next__home" href="../index.html#project" aria-label="포트폴리오 Work 섹션으로 돌아가기"><span class="ns-next__home-arrow" aria-hidden="true">←</span><span class="ns-next__home-label">GO HOME</span></a></p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="ns-footer">
+      <div class="ns-footer__inner ns-shell">
+        <p class="ns-footer__copy">© jGyeol — Neurosurgery landing case study</p>
+        <a class="ns-footer__home" href="../index.html">Go Home</a>
+      </div>
+    </footer>
+
+    <script src="js/neurosurgery.js"></script>
+  </body>
+</html>

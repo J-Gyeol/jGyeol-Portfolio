@@ -193,69 +193,89 @@
       gsap.set(".hero-panel--2 .hero-reveal", { clearProps: "all" });
       return;
     }
-
     var panel1 = ".hero-panel--1";
     var panel2 = ".hero-panel--2";
     var photo = ".hero-about__photo.hero-reveal";
     var title = ".hero-about__title.hero-reveal";
     var body = ".hero-about__body.hero-reveal";
     var tags = ".hero-about__tags.hero-reveal";
-    var isAboutColumnLayout = window.matchMedia("(max-width: 768px)").matches;
+    var desktopQuery = "(min-width: 901px)";
+    var mobileQuery = "(max-width: 900px)";
 
-    gsap.set(panel2, { yPercent: 100 });
-    if (isAboutColumnLayout) {
-      gsap.set(photo, { opacity: 0, y: 56 });
-      gsap.set([title, body], { opacity: 0, y: 46 });
-      gsap.set(tags, { opacity: 0, y: 32 });
-    } else {
-      gsap.set(photo, { opacity: 0, x: -52 });
-      gsap.set([title, body], { opacity: 0, x: 44 });
-      gsap.set(tags, { opacity: 0, y: 28 });
+    // 브레이크포인트 변경(리사이즈) 시 데스크톱/모바일 상태를 자동 전환
+    if (gsap.matchMedia) {
+      var mm = gsap.matchMedia();
+
+      mm.add(desktopQuery, function () {
+        var isAboutColumnLayout = window.matchMedia("(max-width: 768px)").matches;
+
+        gsap.set(panel2, { yPercent: 100 });
+        if (isAboutColumnLayout) {
+          gsap.set(photo, { opacity: 0, y: 56 });
+          gsap.set([title, body], { opacity: 0, y: 46 });
+          gsap.set(tags, { opacity: 0, y: 32 });
+        } else {
+          gsap.set(photo, { opacity: 0, x: -52 });
+          gsap.set([title, body], { opacity: 0, x: 44 });
+          gsap.set(tags, { opacity: 0, y: 28 });
+        }
+
+        var tl = gsap.timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: $root[0],
+            start: "top top",
+            end: "+=200%",
+            pin: true,
+            pinSpacing: true,
+            scrub: HERO_SCRUB,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            refreshPriority: 1,
+          },
+        });
+
+        tl.to(panel1, { yPercent: -100, duration: 1 }, 0)
+          .to(panel2, { yPercent: 0, duration: 1 }, 0)
+          .to(
+            photo,
+            isAboutColumnLayout
+              ? { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }
+              : { opacity: 1, x: 0, duration: 0.52, ease: "power2.out" },
+            0.38
+          )
+          .to(
+            title,
+            isAboutColumnLayout
+              ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
+              : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
+            0.44
+          )
+          .to(
+            body,
+            isAboutColumnLayout
+              ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
+              : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
+            0.5
+          )
+          .to(
+            tags,
+            { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" },
+            0.56
+          );
+      });
+
+      mm.add(mobileQuery, function () {
+        gsap.set([panel1, panel2, photo, title, body, tags], { clearProps: "all" });
+      });
+      return;
     }
 
-    var tl = gsap.timeline({
-      defaults: { ease: "none" },
-      scrollTrigger: {
-        trigger: $root[0],
-        start: "top top",
-        end: "+=200%",
-        pin: true,
-        pinSpacing: true,
-        scrub: HERO_SCRUB,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        refreshPriority: 1,
-      },
-    });
-
-    tl.to(panel1, { yPercent: -100, duration: 1 }, 0)
-      .to(panel2, { yPercent: 0, duration: 1 }, 0)
-      .to(
-        photo,
-        isAboutColumnLayout
-          ? { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }
-          : { opacity: 1, x: 0, duration: 0.52, ease: "power2.out" },
-        0.38
-      )
-      .to(
-        title,
-        isAboutColumnLayout
-          ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
-          : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
-        0.44
-      )
-      .to(
-        body,
-        isAboutColumnLayout
-          ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
-          : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
-        0.5
-      )
-      .to(
-        tags,
-        { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" },
-        0.56
-      );
+    // fallback: matchMedia 미지원 환경에서는 기존 데스크톱 동작 유지
+    if (!window.matchMedia(desktopQuery).matches) {
+      gsap.set([panel1, panel2, photo, title, body, tags], { clearProps: "all" });
+      return;
+    }
   }
 
   /** Hero 1st panel title: fade up on initial load */
@@ -314,12 +334,15 @@
       tl.fromTo(copy, { y: 28 }, { y: -20, duration: 1, ease: "none" }, 0);
     }
 
+    // 큰 타이포 + overflow:hidden에서 ±40vw 스크럽 시 글자가 잘림 → 이동량 완화
+    var bridgeTextShift = "28vw";
+
     if (line1) {
       gsap.set(line1, { transformOrigin: "left center" });
       tl.fromTo(
         line1,
-        { x: "-40vw" },
-        { x: "40vw", duration: 1, ease: "none" },
+        { x: "-" + bridgeTextShift },
+        { x: bridgeTextShift, duration: 1, ease: "none" },
         0
       );
     }
@@ -328,8 +351,8 @@
       gsap.set(line2, { transformOrigin: "right center" });
       tl.fromTo(
         line2,
-        { x: "40vw" },
-        { x: "-40vw", duration: 1, ease: "none" },
+        { x: bridgeTextShift },
+        { x: "-" + bridgeTextShift, duration: 1, ease: "none" },
         0
       );
     }
