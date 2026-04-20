@@ -1,613 +1,609 @@
 ﻿<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio — UI/UX Designer & Publisher</title>
-    <meta
-      name="description"
-      content="UI/UX 신입 디자이너·퍼블리셔 포트폴리오 — B/W &amp; Indie Green"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
 
-  <body>
-    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — UI/UX Designer & Publisher</title>
+  <meta name="description" content="UI/UX 신입 디자이너·퍼블리셔 포트폴리오입니다." />
 
-    <div class="site-header-wrap">
-      <header class="site-header site-header--bar" role="banner">
-        <div class="site-header__row site-header__row--main">
-          <a class="site-header__brand" href="#home" aria-label="홈으로">jGyeol's Portfolio.</a>
-          <a class="site-header__email" href="mailto:gyeol.hn.k@gmail.com">gyeol.hn.k@gmail.com</a>
-          <button
-            type="button"
-            class="site-header__menu-trigger"
-            id="site-menu-trigger"
-            aria-expanded="false"
-            aria-controls="site-menu-panel"
-            aria-haspopup="dialog"
-          >
-            <span class="site-header__status" aria-hidden="true">
-              <span class="site-header__status-dot"></span>
-            </span>
-            <span class="site-header__menu-label">Available Now</span>
-            <span class="site-header__menu-arrow" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M6 10l6 6 6-6"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      </header>
+  <meta name="keywords"
+    content="UI/UX 신입 디자이너, 퍼블리셔, 포트폴리오, 웹 디자인, 웹 개발, 웹 퍼블리싱, 웹 디자인 포트폴리오, 웹 개발 포트폴리오, 웹 퍼블리싱 포트폴리오" />
+  <meta name="author" content="jGyeol" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="naverbot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="yandexbot" content="index, follow" />
+  <meta name="duckduckbot" content="index, follow" />
+  <meta name="slurp" content="index, follow" />
 
-      <div
-        class="site-menu-backdrop"
-        id="site-menu-backdrop"
-        tabindex="-1"
-        aria-hidden="true"
-        hidden
-      ></div>
-      <div
-        class="site-menu-panel"
-        id="site-menu-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="site-menu-heading"
-        hidden
-      >
-        <h2 id="site-menu-heading" class="visually-hidden">주요 메뉴</h2>
-        <nav class="site-menu" aria-label="주요 메뉴">
-          <ol class="site-menu__list">
-            <li>
-              <a class="site-menu__link" href="#home">
-                <span class="site-menu__num">01</span>
-                <span class="site-menu__text">Home</span>
-              </a>
-            </li>
-            <li>
-              <a class="site-menu__link" href="#about">
-                <span class="site-menu__num">02</span>
-                <span class="site-menu__text">About</span>
-              </a>
-            </li>
-            <li>
-              <a class="site-menu__link" href="#skill">
-                <span class="site-menu__num">03</span>
-                <span class="site-menu__text">Skill</span>
-              </a>
-            </li>
-            <li>
-              <a class="site-menu__link" href="#project">
-                <span class="site-menu__num">04</span>
-                <span class="site-menu__text">Project</span>
-              </a>
-            </li>
-            <li>
-              <a class="site-menu__link" href="#contact">
-                <span class="site-menu__num">05</span>
-                <span class="site-menu__text">Contact</span>
-              </a>
-            </li>
-          </ol>
-        </nav>
-        <div class="site-menu__foot">
-          <a
-            class="site-menu__social"
-            href="https://github.com/J-Gyeol"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub 프로필"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
-              />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="jGyeol's Portfolio" />
+  <meta name="twitter:title" content="jGyeol's Portfolio | jGyeol's Portfolio" />
+  <meta name="twitter:description" content="UI/UX 신입 디자이너·퍼블리셔 포트폴리오입니다." />
+  <meta name="twitter:image" content="https://j-gyeol.github.io/jGyeol-Portfolio/assets/images/image.webp" />
+
+
+  <link rel="canonical" href="https://j-gyeol.github.io/jGyeol-Portfolio/" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+
+  <!-- Open graph -->
+  <meta property="og:title" content="jGyeol's Portfolio | jGyeol's Portfolio">
+  <meta property="og:description" content="UI/UX 신입 디자이너·퍼블리셔 포트폴리오입니다.">
+  <meta property="og:image" content="https://j-gyeol.github.io/jGyeol-Portfolio/assets/images/image.webp">
+  <meta property="og:url" content="https://j-gyeol.github.io/jGyeol-Portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="jGyeol's Portfolio">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <div class="site-header-wrap">
+    <header class="site-header site-header--bar" role="banner">
+      <div class="site-header__row site-header__row--main">
+        <a class="site-header__brand" href="#home" aria-label="홈으로">jGyeol's Portfolio.</a>
+        <a class="site-header__email" href="mailto:gyeol.hn.k@gmail.com">gyeol.hn.k@gmail.com</a>
+        <button type="button" class="site-header__menu-trigger" id="site-menu-trigger" aria-expanded="false"
+          aria-controls="site-menu-panel" aria-haspopup="dialog">
+          <span class="site-header__status" aria-hidden="true">
+            <span class="site-header__status-dot"></span>
+          </span>
+          <span class="site-header__menu-label">Available Now</span>
+          <span class="site-header__menu-arrow" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 10l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
-          </a>
-        </div>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <div class="site-menu-backdrop" id="site-menu-backdrop" tabindex="-1" aria-hidden="true" hidden></div>
+    <div class="site-menu-panel" id="site-menu-panel" role="dialog" aria-modal="true"
+      aria-labelledby="site-menu-heading" hidden>
+      <h2 id="site-menu-heading" class="visually-hidden">주요 메뉴</h2>
+      <nav class="site-menu" aria-label="주요 메뉴">
+        <ol class="site-menu__list">
+          <li>
+            <a class="site-menu__link" href="#home">
+              <span class="site-menu__num">01</span>
+              <span class="site-menu__text">Home</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="#about">
+              <span class="site-menu__num">02</span>
+              <span class="site-menu__text">About</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="#skill">
+              <span class="site-menu__num">03</span>
+              <span class="site-menu__text">Skill</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="#project">
+              <span class="site-menu__num">04</span>
+              <span class="site-menu__text">Project</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="#contact">
+              <span class="site-menu__num">05</span>
+              <span class="site-menu__text">Contact</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+      <div class="site-menu__foot">
+        <a class="site-menu__social" href="https://github.com/J-Gyeol" target="_blank" rel="noopener noreferrer"
+          aria-label="GitHub 프로필">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
       </div>
     </div>
+  </div>
 
-    <main id="main">
-      <!-- Hero: 스크롤 시 1패널 → 2패널 전환 (GSAP ScrollTrigger) -->
-      <section class="hero-pinned" id="home" aria-label="히어로">
-        <div class="hero-panels">
-          <div class="hero-panel hero-panel--1">
-            <div class="hero-panel__bg hero-panel__bg--1" aria-hidden="true"></div>
-            <div class="hero-panel__inner hero-panel__inner--bottom">
-              <div class="hero-panel__copy">
-                <p class="hero-eyebrow">Made for you,</p>
-                <p class="hero-sub">HELLO I AM</p>
-                <h1 class="hero-title">jGyeol.</h1>
-              </div>
-              <a
-                class="hero-scroll-cue"
-                href="#about"
-                aria-label="아래로 스크롤하여 자기소개 보기"
-              >
-                <span class="hero-scroll-cue__label">Scroll</span>
-                <svg
-                  class="hero-scroll-cue__icon"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 5v14M12 19l-5-5M12 19l5-5"
-                    stroke="currentColor"
-                    stroke-width="1.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
+  <main id="main">
+    <!-- Hero: 스크롤 시 1패널 → 2패널 전환 (GSAP ScrollTrigger) -->
+    <section class="hero-pinned" id="home" aria-label="히어로">
+      <div class="hero-panels">
+        <div class="hero-panel hero-panel--1">
+          <div class="hero-panel__bg hero-panel__bg--1" aria-hidden="true"></div>
+          <div class="hero-panel__inner hero-panel__inner--bottom">
+            <div class="hero-panel__copy">
+              <p class="hero-eyebrow">Made for you,</p>
+              <p class="hero-sub">HELLO I AM</p>
+              <h1 class="hero-title">jGyeol.</h1>
             </div>
-          </div>
-
-          <div class="hero-panel hero-panel--2" id="about">
-            <div class="hero-panel__bg hero-panel__bg--2" aria-hidden="true"></div>
-            <div class="hero-panel__inner hero-about">
-              <div class="hero-about__photo hero-reveal">
-                <figure class="about-photo">
-                  <img
-                    src="assets/images/me.jpg"
-                    width="480"
-                    height="600"
-                    alt="프로필 사진"
-                    fetchpriority="high"
-                  />
-                </figure>
-              </div>
-              <div class="hero-about__content">
-                <h2 class="hero-about__title hero-reveal" aria-label="ABOUT Gyeol">
-                  <span class="hero-about__title-line hero-about__title-line--about">ABOUT</span>
-                  <span class="hero-about__title-line hero-about__title-line--gyeol">Gyeol</span>
-                </h2>
-                <div class="hero-about__body hero-reveal">
-                  <p>
-                    웹 퍼블리셔 강하늘
-                    <span class="about-aka">a.k.a jGyeol</span>입니다. <br>
-                    사용자의 맥락을 읽고 화면 너머의 흐름까지 설계하는 UIUX 개발을 합니다. 
-                    좋아하면 더 잘한다는 마음으로 레이아웃과 타이포그래피에 감각을 더해 정보를 명료하게 전달합니다.
-                  </p>
-                  <p>
-                    마크업과 스타일부터 인터랙션·모션까지 한 흐름으로 다루며, 접근성과 반응형을 전제로 웹 접근성·웹 표준을 고려한 페이지를 구현합니다.
-                    디자인 의도를 살린 구현과 안정적인 사이트 운영에 집중합니다.
-                  </p>
-                  <p>
-                    Figma 기반 협업과 그래픽 작업에 익숙하고, AI로 초안·반복 작업을 줄여 속도와 품질의 균형을 맞춥니다.
-                    맡은 목적을 먼저 보고, 직군을 넘나드는 소통으로 UX를 완성합니다.
-                  </p>
-                </div>
-                <ul class="hero-about__tags hero-reveal">
-                  <li>PUBLISHING FIRST</li>
-                  <li>UI &amp; MOTION</li>
-                  <li>DESIGN × COLLAB</li>
-                </ul>
-              </div>
-            </div>
+            <a class="hero-scroll-cue" href="#about" aria-label="아래로 스크롤하여 자기소개 보기">
+              <span class="hero-scroll-cue__label">Scroll</span>
+              <svg class="hero-scroll-cue__icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 5v14M12 19l-5-5M12 19l5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
           </div>
         </div>
-      </section>
 
-      <!-- Skill 전: 풀뷰포트 홀로그램 (자연 스크롤 + scrub 모션) -->
-      <section class="skill-bridge" aria-label="Skill 영역 소개">
-        <div class="skill-bridge__media">
-          <div class="skill-bridge__bg js-skill-bridge-bg" aria-hidden="true"></div>
-        </div>
-        <div class="skill-bridge__inner">
-          <div class="skill-bridge__copy">
-            <div class="skill-bridge__row skill-bridge__row--left">
-              <p class="skill-bridge__line1 js-skill-bridge-line1">Only for users,</p>
+        <div class="hero-panel hero-panel--2" id="about">
+          <div class="hero-panel__bg hero-panel__bg--2" aria-hidden="true"></div>
+          <div class="hero-panel__inner hero-about">
+            <div class="hero-about__photo hero-reveal">
+              <figure class="about-photo">
+                <img src="assets/images/me.jpg" width="480" height="600" alt="프로필 사진" fetchpriority="high" />
+              </figure>
             </div>
-            <div class="skill-bridge__row skill-bridge__row--right">
-              <p class="skill-bridge__line2 js-skill-bridge-line2">Built by jGyeol</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="skill-section" id="skill" aria-labelledby="skill-heading">
-        <div class="skill-section__inner">
-          <header class="skill-section__head js-skill-head">
-            <p class="skill-section__kicker">Capability</p>
-            <h2 class="skill-section__title" id="skill-heading">SKILL</h2>
-          </header>
-
-          <div class="skill-lists js-skill-lists">
-            <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-dev-heading">
-              <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-dev-heading">Development</h3>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="92" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">HTML</h4>
-                      <p class="skill-row__desc">시맨틱 마크업, 접근성·SEO 구조</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="90" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">CSS</h4>
-                      <p class="skill-row__desc">반응형 레이아웃, 디자인 시스템, 모션 UI</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="86" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">JavaScript</h4>
-                      <p class="skill-row__desc">상태 기반 인터랙션, 사용자 경험 구현</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="83" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">SASS / SCSS</h4>
-                      <p class="skill-row__desc">변수·믹스인 기반 구조화 스타일링</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="82" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">jQuery</h4>
-                      <p class="skill-row__desc">DOM 제어, 이벤트 핸들링, 상호작용 구현</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="80" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Bootstrap</h4>
-                      <p class="skill-row__desc">반응형 그리드와 컴포넌트 기반 UI 구현</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="79" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">WordPress</h4>
-                      <p class="skill-row__desc">테마 커스터마이징 기반 사이트 구축</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="78" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">GSAP / ScrollTrigger</h4>
-                      <p class="skill-row__desc">스크롤 기반 모션 및 인터랙션 설계</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-ai-heading">
-              <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-ai-heading">AI</h3>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="84" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">ChatGPT</h4>
-                      <p class="skill-row__desc">카피 초안, 로직 보조, QA 시나리오 작성</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="81" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Claude</h4>
-                      <p class="skill-row__desc">문서 구조화와 콘텐츠 개선 보조</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="80" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Cursor</h4>
-                      <p class="skill-row__desc">코드 작성 보조와 빠른 반복 개발</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="77" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Gemini</h4>
-                      <p class="skill-row__desc">아이디어 확장과 문제 해결 보조</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="75" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">imageFX</h4>
-                      <p class="skill-row__desc">이미지 아이디어 생성과 시안 제작 보조</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-design-heading">
-              <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-design-heading">Design</h3>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="88" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Figma</h4>
-                      <p class="skill-row__desc">컴포넌트, 오토 레이아웃, 프로토타입</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="86" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Photoshop</h4>
-                      <p class="skill-row__desc">이미지 편집, 키 비주얼 구도</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="84" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Illustrator</h4>
-                      <p class="skill-row__desc">아이콘·벡터 에셋, 브랜드 그래픽</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="83" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">InDesign</h4>
-                      <p class="skill-row__desc">그래픽 마스터 자격 보유. 인쇄물·다단·타이포·문서 편집</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="79" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Capcut</h4>
-                      <p class="skill-row__desc">숏폼 영상 편집과 텍스트 모션 제작</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-etc-heading">
-              <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-etc-heading">ETC</h3>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="86" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Word</h4>
-                      <p class="skill-row__desc">ITQ 자격증 기반 문서 작성 및 편집</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="85" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Powerpoint</h4>
-                      <p class="skill-row__desc">ITQ 자격증 기반 발표자료 및 문서 시각화</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="84" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Excel</h4>
-                      <p class="skill-row__desc">컴퓨터활용능력 2급 기반 데이터 정리 및 함수 활용</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="83" tabindex="0">
-                <div class="skill-row__roll">
-                  <div class="skill-row__bg" aria-hidden="true"></div>
-                  <div class="skill-row__main">
-                    <div class="skill-row__top">
-                      <h4 class="skill-row__name">Google Docs / Spreadsheet</h4>
-                      <p class="skill-row__desc">협업 문서 작성과 실시간 스프레드시트 운용</p>
-                    </div>
-                    <div class="skill-row__bar-wrap" aria-hidden="true">
-                      <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        class="work-section"
-        id="project"
-        aria-labelledby="work-heading"
-      >
-        <div class="work-section__sticky">
-          <div class="work-section__intro">
-            <header class="work-section__head">
-              <p class="work-section__kicker">Portfolio</p>
-              <div class="work-section__title-row">
-                <h2 class="work-section__title" id="work-heading">WORK</h2>
-                <details class="work-section__more">
-                  <summary class="work-section__more-btn">
-                    <span class="visually-hidden">프로젝트 소개 추가 보기</span>
-                    <span class="work-section__more-icon" aria-hidden="true">+</span>
-                  </summary>
-                </details>
-                <p class="work-section__more-text">
-                  브랜드·서비스 맥락에 맞춘 UI 설계와 퍼블리싱으로 완성한 결과물입니다. 카드를 눌러 상세
-                  페이지로 이동할 수 있습니다.
+            <div class="hero-about__content">
+              <h2 class="hero-about__title hero-reveal" aria-label="ABOUT Gyeol">
+                <span class="hero-about__title-line hero-about__title-line--about">ABOUT</span>
+                <span class="hero-about__title-line hero-about__title-line--gyeol">Gyeol</span>
+              </h2>
+              <div class="hero-about__body hero-reveal">
+                <p>
+                  웹 퍼블리셔 강하늘
+                  <span class="about-aka">a.k.a jGyeol</span>입니다. <br>
+                  사용자의 맥락을 읽고 화면 너머의 흐름까지 설계하는 UIUX 개발을 합니다.
+                  좋아하면 더 잘한다는 마음으로 레이아웃과 타이포그래피에 감각을 더해 정보를 명료하게 전달합니다.
+                </p>
+                <p>
+                  마크업과 스타일부터 인터랙션·모션까지 한 흐름으로 다루며, 접근성과 반응형을 전제로 웹 접근성·웹 표준을 고려한 페이지를 구현합니다.
+                  디자인 의도를 살린 구현과 안정적인 사이트 운영에 집중합니다.
+                </p>
+                <p>
+                  Figma 기반 협업과 그래픽 작업에 익숙하고, AI로 초안·반복 작업을 줄여 속도와 품질의 균형을 맞춥니다.
+                  맡은 목적을 먼저 보고, 직군을 넘나드는 소통으로 UX를 완성합니다.
                 </p>
               </div>
-            </header>
-            <p class="work-section__lead">
-              디자인과 코드를 아우르는 포트폴리오 모음입니다. 스크롤에 따라 작업물을 차례로 살펴보세요.
-            </p>
+              <ul class="hero-about__tags hero-reveal">
+                <li>PUBLISHING FIRST</li>
+                <li>UI &amp; MOTION</li>
+                <li>DESIGN × COLLAB</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skill 전: 풀뷰포트 홀로그램 (자연 스크롤 + scrub 모션) -->
+    <section class="skill-bridge" aria-label="Skill 영역 소개">
+      <div class="skill-bridge__media">
+        <div class="skill-bridge__bg js-skill-bridge-bg" aria-hidden="true"></div>
+      </div>
+      <div class="skill-bridge__inner">
+        <div class="skill-bridge__copy">
+          <div class="skill-bridge__row skill-bridge__row--left">
+            <p class="skill-bridge__line1 js-skill-bridge-line1">Only for users,</p>
+          </div>
+          <div class="skill-bridge__row skill-bridge__row--right">
+            <p class="skill-bridge__line2 js-skill-bridge-line2">Built by jGyeol</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skill-section" id="skill" aria-labelledby="skill-heading">
+      <div class="skill-section__inner">
+        <header class="skill-section__head js-skill-head">
+          <p class="skill-section__kicker">Capability</p>
+          <h2 class="skill-section__title" id="skill-heading">SKILL</h2>
+        </header>
+
+        <div class="skill-lists js-skill-lists">
+          <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-dev-heading">
+            <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-dev-heading">
+              Development</h3>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="92"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">HTML</h4>
+                    <p class="skill-row__desc">시맨틱 마크업, 접근성·SEO 구조</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="90"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">CSS</h4>
+                    <p class="skill-row__desc">반응형 레이아웃, 디자인 시스템, 모션 UI</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="86"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">JavaScript</h4>
+                    <p class="skill-row__desc">상태 기반 인터랙션, 사용자 경험 구현</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="83"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">SASS / SCSS</h4>
+                    <p class="skill-row__desc">변수·믹스인 기반 구조화 스타일링</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="82"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">jQuery</h4>
+                    <p class="skill-row__desc">DOM 제어, 이벤트 핸들링, 상호작용 구현</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="80"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Bootstrap</h4>
+                    <p class="skill-row__desc">반응형 그리드와 컴포넌트 기반 UI 구현</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="79"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">WordPress</h4>
+                    <p class="skill-row__desc">테마 커스터마이징 기반 사이트 구축</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="78"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">GSAP / ScrollTrigger</h4>
+                    <p class="skill-row__desc">스크롤 기반 모션 및 인터랙션 설계</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <div class="work-section__viewport-wrap">
-            <div class="work-section__line" aria-hidden="true"></div>
-            <div class="work-section__viewport">
-              <div class="work-section__track js-work-track">
+          <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-ai-heading">
+            <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-ai-heading">AI</h3>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="84"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">ChatGPT</h4>
+                    <p class="skill-row__desc">카피 초안, 로직 보조, QA 시나리오 작성</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="81"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Claude</h4>
+                    <p class="skill-row__desc">문서 구조화와 콘텐츠 개선 보조</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="80"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Cursor</h4>
+                    <p class="skill-row__desc">코드 작성 보조와 빠른 반복 개발</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="77"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Gemini</h4>
+                    <p class="skill-row__desc">아이디어 확장과 문제 해결 보조</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="75"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">imageFX</h4>
+                    <p class="skill-row__desc">이미지 아이디어 생성과 시안 제작 보조</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-design-heading">
+            <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-design-heading">
+              Design</h3>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="88"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Figma</h4>
+                    <p class="skill-row__desc">컴포넌트, 오토 레이아웃, 프로토타입</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="86"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Photoshop</h4>
+                    <p class="skill-row__desc">이미지 편집, 키 비주얼 구도</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="84"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Illustrator</h4>
+                    <p class="skill-row__desc">아이콘·벡터 에셋, 브랜드 그래픽</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="83"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">InDesign</h4>
+                    <p class="skill-row__desc">그래픽 마스터 자격 보유. 인쇄물·다단·타이포·문서 편집</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="79"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Capcut</h4>
+                    <p class="skill-row__desc">숏폼 영상 편집과 텍스트 모션 제작</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="skill-list skill-reveal-item" role="region" aria-labelledby="skill-etc-heading">
+            <h3 class="skill-list__label nectar-waypoint-el nectar-waypoint-el--shift-sm" id="skill-etc-heading">ETC
+            </h3>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="86"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Word</h4>
+                    <p class="skill-row__desc">ITQ 자격증 기반 문서 작성 및 편집</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="85"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Powerpoint</h4>
+                    <p class="skill-row__desc">ITQ 자격증 기반 발표자료 및 문서 시각화</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="84"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Excel</h4>
+                    <p class="skill-row__desc">컴퓨터활용능력 2급 기반 데이터 정리 및 함수 활용</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="83"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">Google Docs / Spreadsheet</h4>
+                    <p class="skill-row__desc">협업 문서 작성과 실시간 스프레드시트 운용</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="work-section" id="project" aria-labelledby="work-heading">
+      <div class="work-section__sticky">
+        <div class="work-section__intro">
+          <header class="work-section__head">
+            <p class="work-section__kicker">Portfolio</p>
+            <div class="work-section__title-row">
+              <h2 class="work-section__title" id="work-heading">WORK</h2>
+              <details class="work-section__more">
+                <summary class="work-section__more-btn">
+                  <span class="visually-hidden">프로젝트 소개 추가 보기</span>
+                  <span class="work-section__more-icon" aria-hidden="true">+</span>
+                </summary>
+              </details>
+              <p class="work-section__more-text">
+                브랜드·서비스 맥락에 맞춘 UI 설계와 퍼블리싱으로 완성한 결과물입니다. 카드를 눌러 상세
+                페이지로 이동할 수 있습니다.
+              </p>
+            </div>
+          </header>
+          <p class="work-section__lead">
+            디자인과 코드를 아우르는 포트폴리오 모음입니다. 스크롤에 따라 작업물을 차례로 살펴보세요.
+          </p>
+        </div>
+
+        <div class="work-section__viewport-wrap">
+          <div class="work-section__line" aria-hidden="true"></div>
+          <div class="work-section__viewport">
+            <div class="work-section__track js-work-track">
               <article class="work-card work-card--sq work-card--brand1">
-                <a
-                  class="work-card__link"
-                  href="neurosurgery/index.html"
-                  aria-label="이젠신경외과 작업 상세 보기"
-                >
+                <a class="work-card__link" href="neurosurgery/index.html" aria-label="이젠신경외과 작업 상세 보기">
                   <div class="work-card__media">
-                    <img
-                      src="assets/images/logo-company-1.webp"
-                      alt="브랜드 로고 1"
-                      loading="lazy"
-                      decoding="async"
-                      class="work-card__brand-image work-card__brand-image--company"
-                    />
+                    <img src="assets/images/logo-company-1.webp" alt="브랜드 로고 1" loading="lazy" decoding="async"
+                      class="work-card__brand-image work-card__brand-image--company" />
                   </div>
                   <div class="work-card__overlay">
                     <h3 class="work-card__title">이젠신경외과</h3>
@@ -622,18 +618,10 @@
               </article>
 
               <article class="work-card work-card--tall work-card--brand2">
-                <a
-                  class="work-card__link"
-                  href="dn-publishment/index.html"
-                  aria-label="도서출판 다운 상세 보기">
+                <a class="work-card__link" href="dn-publishment/index.html" aria-label="도서출판 다운 상세 보기">
                   <div class="work-card__media">
-                    <img
-                      src="assets/images/logo-company-2.png"
-                      alt="브랜드 로고 2"
-                      loading="lazy"
-                      decoding="async"
-                      class="work-card__brand-image work-card__brand-image--company"
-                    />
+                    <img src="assets/images/logo-company-2.png" alt="브랜드 로고 2" loading="lazy" decoding="async"
+                      class="work-card__brand-image work-card__brand-image--company" />
                   </div>
                   <div class="work-card__overlay">
                     <h3 class="work-card__title">도서출판 다운</h3>
@@ -651,13 +639,8 @@
               <article class="work-card work-card--wide work-card--brand3">
                 <a class="work-card__link" href="#" aria-label="BlueBuddy Kit 프로젝트 상세 보기">
                   <div class="work-card__media">
-                    <img
-                      src="assets/images/logo-company-3.png"
-                      alt="브랜드 로고 3"
-                      loading="lazy"
-                      decoding="async"
-                      class="work-card__brand-image work-card__brand-image--company"
-                    />
+                    <img src="assets/images/logo-company-3.png" alt="브랜드 로고 3" loading="lazy" decoding="async"
+                      class="work-card__brand-image work-card__brand-image--company" />
                   </div>
                   <div class="work-card__overlay">
                     <h3 class="work-card__title">BlueBuddy</h3>
@@ -675,13 +658,8 @@
               <article class="work-card work-card--tall work-card--tall-sm work-card--brand4">
                 <a class="work-card__link" href="#" aria-label="노랑풍선 상세 보기">
                   <div class="work-card__media">
-                    <img
-                      src="assets/images/logo-company-4.png"
-                      alt="브랜드 로고 4"
-                      loading="lazy"
-                      decoding="async"
-                      class="work-card__brand-image work-card__brand-image--company"
-                    />
+                    <img src="assets/images/logo-company-4.png" alt="브랜드 로고 4" loading="lazy" decoding="async"
+                      class="work-card__brand-image work-card__brand-image--company" />
                   </div>
                   <div class="work-card__overlay">
                     <h3 class="work-card__title">노랑풍선</h3>
@@ -699,13 +677,8 @@
               <article class="work-card work-card--sq work-card--brand5">
                 <a class="work-card__link" href="#" aria-label="NETFLIX 상세 보기">
                   <div class="work-card__media">
-                    <img
-                      src="assets/images/logo-company-5.png"
-                      alt="브랜드 로고 5"
-                      loading="lazy"
-                      decoding="async"
-                      class="work-card__brand-image work-card__brand-image--company"
-                    />
+                    <img src="assets/images/logo-company-5.png" alt="브랜드 로고 5" loading="lazy" decoding="async"
+                      class="work-card__brand-image work-card__brand-image--company" />
                   </div>
                   <div class="work-card__overlay">
                     <h3 class="work-card__title">NETFLIX</h3>
@@ -723,13 +696,8 @@
               <article class="work-card work-card--wide work-card--brand6">
                 <a class="work-card__link" href="#" aria-label="PLANET 상세 보기">
                   <div class="work-card__media">
-                    <img
-                      src="assets/images/logo-company-6.png"
-                      alt="브랜드 로고 6"
-                      loading="lazy"
-                      decoding="async"
-                      class="work-card__brand-image work-card__brand-image--company"
-                    />
+                    <img src="assets/images/logo-company-6.png" alt="브랜드 로고 6" loading="lazy" decoding="async"
+                      class="work-card__brand-image work-card__brand-image--company" />
                   </div>
                   <div class="work-card__overlay">
                     <h3 class="work-card__title">PLANET</h3>
@@ -763,65 +731,65 @@
                 </a>
               </article>
 
-              </div>
             </div>
           </div>
+        </div>
 
-        </div>
-      </section>
-      <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-        <div class="contact-section__inner">
-          <header class="contact-section__head">
-            <p class="contact-section__kicker">Contact</p>
-            <div class="contact-section__title-row">
-              <h2 class="contact-section__title" id="contact-heading">질문을 해답으로 바꾸는 퍼블리셔, 찾고 계셨나요?</h2>
-              <p class="contact-section__welcome" aria-live="polite">언제든 메일 남겨주세요.</p>
-            </div>
-          </header>
-
-          <p class="contact-section__email-wrap">
-            <a class="contact-section__email-link" href="mailto:gyeol.hn.k@gmail.com">gyeol.hn.k@gmail.com</a>
-          </p>
-
-          <div class="contact-section__details">
-            <p class="contact-section__text">
-              신입 웹 퍼블리셔이지만, 작은 디테일에서도 브랜드의 결을 살리는 감각과 사용자 중심의 시선을 바탕으로 화면을 구현합니다. 빠르게 배우고 꾸준히 개선하며,  프로젝트에 필요한 속도와 완성도를 함께
-              높이겠습니다.
-            </p>
-            <p class="contact-section__text">
-              제 가능성과 팀의 경험이 만나 더 좋은 결과를 만들 수 있다고 믿습니다. 서로 배우고 함께 성장하는 협업을 기대합니다. 궁금한 내용이 있다면 편하게 메일 주세요.
-            </p>
-            <a class="contact-section__mail-cta" href="mailto:gyeol.hn.k@gmail.com">메일 보내기</a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer" aria-label="푸터">
-      <div class="site-footer__inner">
-        <div class="site-footer__left">
-          <p class="site-footer__label">Github from</p>
-          <a class="site-footer__link" href="https://github.com/J-Gyeol" target="_blank" rel="noopener noreferrer">
-            https://github.com/J-Gyeol
-          </a>
-        </div>
-        <div class="site-footer__center">
-          <p class="site-footer__madeby">Made by jGyeol with</p>
-          <p class="site-footer__copy">ⓒ 2026 Portfolio</p>
-        </div>
-        <div class="site-footer__spacer" aria-hidden="true"></div>
       </div>
-    </footer>
+    </section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-section__inner">
+        <header class="contact-section__head">
+          <p class="contact-section__kicker">Contact</p>
+          <div class="contact-section__title-row">
+            <h2 class="contact-section__title" id="contact-heading">질문을 해답으로 바꾸는 퍼블리셔, 찾고 계셨나요?</h2>
+            <p class="contact-section__welcome" aria-live="polite">언제든 메일 남겨주세요.</p>
+          </div>
+        </header>
 
-    <div class="mouse-orb" id="mouse-orb" aria-hidden="true"></div>
-    <div class="mouse-orb__core" id="mouse-orb-core" aria-hidden="true"></div>
+        <p class="contact-section__email-wrap">
+          <a class="contact-section__email-link" href="mailto:gyeol.hn.k@gmail.com">gyeol.hn.k@gmail.com</a>
+        </p>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+        <div class="contact-section__details">
+          <p class="contact-section__text">
+            신입 웹 퍼블리셔이지만, 작은 디테일에서도 브랜드의 결을 살리는 감각과 사용자 중심의 시선을 바탕으로 화면을 구현합니다. 빠르게 배우고 꾸준히 개선하며, 프로젝트에 필요한 속도와 완성도를 함께
+            높이겠습니다.
+          </p>
+          <p class="contact-section__text">
+            제 가능성과 팀의 경험이 만나 더 좋은 결과를 만들 수 있다고 믿습니다. 서로 배우고 함께 성장하는 협업을 기대합니다. 궁금한 내용이 있다면 편하게 메일 주세요.
+          </p>
+          <a class="contact-section__mail-cta" href="mailto:gyeol.hn.k@gmail.com">메일 보내기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" aria-label="푸터">
+    <div class="site-footer__inner">
+      <div class="site-footer__left">
+        <p class="site-footer__label">Github from</p>
+        <a class="site-footer__link" href="https://github.com/J-Gyeol" target="_blank" rel="noopener noreferrer">
+          https://github.com/J-Gyeol
+        </a>
+      </div>
+      <div class="site-footer__center">
+        <p class="site-footer__madeby">Made by jGyeol with</p>
+        <p class="site-footer__copy">ⓒ 2026 Portfolio</p>
+      </div>
+      <div class="site-footer__spacer" aria-hidden="true"></div>
+    </div>
+  </footer>
+
+  <div class="mouse-orb" id="mouse-orb" aria-hidden="true"></div>
+  <div class="mouse-orb__core" id="mouse-orb-core" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
 </html>
-
