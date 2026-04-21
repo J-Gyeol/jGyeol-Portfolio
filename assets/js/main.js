@@ -225,7 +225,7 @@
           scrollTrigger: {
             trigger: $root[0],
             start: "top top",
-            end: "+=200%",
+            end: "+=105%",
             pin: true,
             pinSpacing: true,
             scrub: HERO_SCRUB,
@@ -302,6 +302,45 @@
     );
   }
 
+  /** Hero 1st panel background: pointer-follow subtle parallax */
+  function initHeroPointerParallax() {
+    if (prefersReducedMotion) return;
+    if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
+
+    var hero = document.querySelector(".hero-panel--1");
+    var bg = document.querySelector(".hero-panel__bg--1");
+    if (!hero || !bg) return;
+
+    var moveX = gsap.quickTo(bg, "x", { duration: 0.42, ease: "power3.out" });
+    var moveY = gsap.quickTo(bg, "y", { duration: 0.42, ease: "power3.out" });
+    var moveMX = gsap.quickTo(bg, "--hero-mx", { duration: 0.34, ease: "power2.out", unit: "%" });
+    var moveMY = gsap.quickTo(bg, "--hero-my", { duration: 0.34, ease: "power2.out", unit: "%" });
+    var maxShift = 14;
+
+    function onMove(e) {
+      var rect = hero.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      var nx = (e.clientX - rect.left) / rect.width - 0.5;
+      var ny = (e.clientY - rect.top) / rect.height - 0.5;
+      moveX(nx * maxShift);
+      moveY(ny * maxShift);
+      moveMX((nx + 0.5) * 100);
+      moveMY((ny + 0.5) * 100);
+    }
+
+    function onLeave() {
+      moveX(0);
+      moveY(0);
+      moveMX(50);
+      moveMY(50);
+    }
+
+    hero.addEventListener("mousemove", onMove, { passive: true });
+    hero.addEventListener("mouseleave", onLeave, { passive: true });
+    hero.addEventListener("blur", onLeave, { passive: true });
+  }
+
   function initSkillBridgeParallax() {
     var bridge = document.querySelector(".skill-bridge");
     var bg = document.querySelector(".js-skill-bridge-bg");
@@ -315,45 +354,95 @@
       return;
     }
 
-    var st = {
-      trigger: bridge,
-      start: "top bottom",
-      end: "bottom top",
-      scrub: PAGE_SCRUB,
-      invalidateOnRefresh: true,
-    };
+    // 스크럽 없이도 체감되도록 진입/복귀를 명시적으로 제어
+    gsap.set([bg, copy, line1, line2].filter(Boolean), { force3D: true });
 
-    var tl = gsap.timeline({
-      defaults: { ease: "none" },
-      scrollTrigger: st,
-    });
-
-    tl.fromTo(bg, { y: 0 }, { y: 110, duration: 1, ease: "none" }, 0);
+    gsap.fromTo(
+      bg,
+      { y: 0 },
+      {
+        y: 110,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: bridge,
+          start: "top 92%",
+          end: "bottom top",
+          toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
+        },
+      }
+    );
 
     if (copy) {
-      tl.fromTo(copy, { y: 28 }, { y: -20, duration: 1, ease: "none" }, 0);
+      gsap.fromTo(
+        copy,
+        { y: 26 },
+        {
+          y: -24,
+          duration: 0.95,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: bridge,
+            start: "top 92%",
+            end: "bottom top",
+            toggleActions: "play none none reverse",
+            invalidateOnRefresh: true,
+          },
+        }
+      );
     }
 
-    // 큰 타이포 + overflow:hidden에서 ±40vw 스크럽 시 글자가 잘림 → 이동량 완화
-    var bridgeTextShift = "28vw";
+    function getTwoCharClipPx(el) {
+      if (!el) return 40;
+      var text = (el.textContent || "").trim();
+      var textLen = Math.max(1, text.length);
+      var lineWidth = el.getBoundingClientRect().width || 0;
+      var avgChar = lineWidth > 0 ? lineWidth / textLen : parseFloat(getComputedStyle(el).fontSize || "20");
+      return Math.max(24, avgChar * 2);
+    }
 
     if (line1) {
-      gsap.set(line1, { transformOrigin: "left center" });
-      tl.fromTo(
+      gsap.fromTo(
         line1,
-        { x: "-" + bridgeTextShift },
-        { x: bridgeTextShift, duration: 1, ease: "none" },
-        0
+        { x: 0 },
+        {
+          x: function () {
+            var lineWidth = line1.getBoundingClientRect().width || 0;
+            var clip = getTwoCharClipPx(line1);
+            return Math.max(0, window.innerWidth - lineWidth + clip);
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: bridge,
+            start: "top 92%",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
       );
     }
 
     if (line2) {
-      gsap.set(line2, { transformOrigin: "right center" });
-      tl.fromTo(
+      gsap.fromTo(
         line2,
-        { x: bridgeTextShift },
-        { x: "-" + bridgeTextShift, duration: 1, ease: "none" },
-        0
+        { x: 0 },
+        {
+          x: function () {
+            var lineWidth = line2.getBoundingClientRect().width || 0;
+            var clip = getTwoCharClipPx(line2);
+            return -Math.max(0, window.innerWidth - lineWidth + clip);
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: bridge,
+            start: "top 92%",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
       );
     }
   }
@@ -873,6 +962,7 @@
     initSiteMenu();
     initHeaderLightTheme();
     initHeroTitleFadeUp();
+    initHeroPointerParallax();
     initHeroScroll();
     initSkillBridgeParallax();
     initWorkHorizontalScroll();
