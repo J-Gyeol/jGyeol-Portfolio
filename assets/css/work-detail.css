@@ -311,6 +311,7 @@ html[data-theme="dark"] .ns-theme-toggle .ns-theme-toggle__icon--moon {
   padding-top: var(--header-h);
   padding-bottom: clamp(3rem, 8vw, 5rem);
 }
+
 @media (max-width: 414px) {
   .ns-main {
     padding-top: var(--header-h-mo);
@@ -390,9 +391,106 @@ html[data-theme="dark"] .ns-theme-toggle .ns-theme-toggle__icon--moon {
   color: var(--text-muted);
   line-height: 1.68;
 }
+
+.ns-contrib {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.42rem 0.78rem;
+  font-size: var(--ns-text-sm);
+  color: var(--text);
+  background: var(--ns-card);
+  border: 1px solid var(--ns-line);
+  border-radius: 14px;
+  min-width: min(100%, 760px);
+}
+
+.ns-contrib__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.ns-contrib__label {
+  color: var(--text-muted);
+}
+
+.ns-contrib__value {
+  font-weight: 600;
+}
+
+.ns-contrib__pl {
+  color: var(--indie-green);
+  font-weight: 700;
+}
+
+.ns-contrib__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  margin-left: auto;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--ns-line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.ns-contrib__toggle:hover {
+  color: var(--text);
+  border-color: var(--indie-green-soft);
+}
+
+.ns-contrib__toggle[aria-expanded="true"] .ns-contrib__chev {
+  transform: rotate(180deg);
+}
+
+.ns-contrib__chev {
+  transition: transform 0.2s ease;
+}
+
+.ns-contrib__detail {
+  border-top: 1px dashed var(--ns-line);
+  padding: 0.6rem;
+}
+
+.ns-contrib__detail-title {
+  font-size: var(--ns-text-sm);
+  margin: 0 0 0.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ns-contrib__detail-list {
+  margin: 0 0 0.6rem;
+  padding-left: 1rem;
+  color: var(--text-muted);
+}
+
+.ns-contrib__detail-list:last-child {
+  margin-bottom: 0;
+}
+
+.ns-contrib__detail-list li {
+  line-height: 1.5;
+}
+
+.ns-nowrap {
+  white-space: nowrap;
+}
 @media (max-width: 1024px) {
   .ns-lead {
     margin: 0 0 1.25rem;
+  }
+
+  .ns-contrib {
+    margin-bottom: 0.85rem;
   }
 }
 
@@ -435,7 +533,8 @@ html[data-theme="dark"] .ns-theme-toggle .ns-theme-toggle__icon--moon {
 /* 첫 개요 섹션: 구 hero-actions 하단 여백을 여기로 이동 */
 .ns-section[aria-labelledby="ns-overview"],
 .ns-section[aria-labelledby="dn-overview"],
-.ns-section[aria-labelledby="bb-overview"] {
+.ns-section[aria-labelledby="bb-overview"],
+.ns-section[aria-labelledby="yb-overview"] {
   margin-top: var(--ns-overview-top-gap);
 }
 
@@ -554,8 +653,8 @@ html[data-theme="light"] .ns-btn--ghost:focus-visible {
   color: var(--text);
 }
 
-.ns-section p {
-  margin: 0 0 1rem;
+.ns-section p:not(.ns-contrib__detail-title) {
+  margin: 0 0 0.85rem;
   font-size: var(--ns-text-body);
   line-height: 1.68;
   color: var(--text-body);

@@ -1060,7 +1060,7 @@ body.site-menu-open {
   display: flex;
   flex-direction: column;
   gap: clamp(1.25rem, 2.5vw, 2rem);
-  max-width: 52%;
+  max-width: 50%;
 }
 
 .hero-about__title {
@@ -1124,6 +1124,7 @@ body.site-menu-open {
   font-weight: 400;
   line-height: 1.85;
   color: var(--about-muted);
+  word-break: keep-all;
 }
 
 .hero-about__body p:last-child {
@@ -2215,6 +2216,7 @@ body.site-menu-open {
   font-size: 0.98rem;
   line-height: 1.7;
   color: rgba(244, 244, 242, 0.72);
+  word-break: keep-all;
 }
 
 .contact-section__mail-cta {

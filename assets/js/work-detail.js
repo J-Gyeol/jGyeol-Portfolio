@@ -13,7 +13,8 @@
       var legacy =
         localStorage.getItem("neurosurgery-theme") ||
         localStorage.getItem("dn-publishment-theme") ||
-        localStorage.getItem("bluebuddy-theme");
+        localStorage.getItem("bluebuddy-theme") ||
+        localStorage.getItem("yellow-balloon-theme");
       if (legacy === "dark" || legacy === "light") {
         localStorage.setItem(STORAGE_KEY, legacy);
         return legacy;
@@ -65,7 +66,27 @@
     header.classList.toggle("ns-header--scrolled", y > 8);
   }
 
+  function initContribDropdown() {
+    var toggles = document.querySelectorAll(".js-contrib-toggle");
+    if (!toggles.length) return;
+
+    toggles.forEach(function (btn) {
+      var panelId = btn.getAttribute("aria-controls");
+      if (!panelId) return;
+      var panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      btn.addEventListener("click", function () {
+        var expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+        btn.setAttribute("aria-label", expanded ? "기여도 상세 펼치기" : "기여도 상세 접기");
+        panel.hidden = expanded;
+      });
+    });
+  }
+
   initTheme();
+  initContribDropdown();
 
   if (themeToggle) {
     themeToggle.addEventListener("click", function () {
