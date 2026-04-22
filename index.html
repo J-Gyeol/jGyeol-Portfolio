@@ -62,7 +62,7 @@
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20260422-hero6" />
 </head>
 
 <body>
@@ -146,7 +146,29 @@
     <section class="hero-pinned" id="home" aria-label="히어로">
       <div class="hero-panels">
         <div class="hero-panel hero-panel--1">
-          <div class="hero-panel__bg hero-panel__bg--1" aria-hidden="true"></div>
+          <div class="hero-panel__bg hero-panel__bg--1" aria-hidden="true">
+            <!-- CodePen식 goo 블롭(자동 움직임 + 마우스 추적). 노이즈 레이어 없음 -->
+            <div class="hero-panel__blobs">
+              <svg class="hero-panel__goo-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <defs>
+                  <filter id="heroPanelGoo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                      result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                  </filter>
+                </defs>
+              </svg>
+              <div class="hero-panel__gradients-container">
+                <div class="hero-panel__blob hero-panel__blob--g1"></div>
+                <div class="hero-panel__blob hero-panel__blob--g2"></div>
+                <div class="hero-panel__blob hero-panel__blob--g3"></div>
+                <div class="hero-panel__blob hero-panel__blob--g4"></div>
+                <div class="hero-panel__blob hero-panel__blob--g5"></div>
+                <div class="hero-panel__blob hero-panel__blob--interactive js-hero-blob-interactive"></div>
+              </div>
+            </div>
+          </div>
           <div class="hero-panel__inner hero-panel__inner--bottom">
             <div class="hero-panel__copy">
               <p class="hero-eyebrow">Made for you,</p>
@@ -207,7 +229,7 @@
     <!-- Skill 전: 풀뷰포트 홀로그램 (자연 스크롤 + scrub 모션) -->
     <section class="skill-bridge" aria-label="Skill 영역 소개">
       <div class="skill-bridge__media">
-        <div class="skill-bridge__bg js-skill-bridge-bg" aria-hidden="true"></div>
+        <div class="skill-bridge__bg" aria-hidden="true"></div>
       </div>
       <div class="skill-bridge__inner">
         <div class="skill-bridge__copy">
@@ -345,6 +367,21 @@
                   <div class="skill-row__top">
                     <h4 class="skill-row__name">GSAP / ScrollTrigger</h4>
                     <p class="skill-row__desc">스크롤 기반 모션 및 인터랙션 설계</p>
+                  </div>
+                  <div class="skill-row__bar-wrap" aria-hidden="true">
+                    <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="skill-row nectar-waypoint-el nectar-waypoint-el--shift-md" data-skill-level="90"
+              tabindex="0">
+              <div class="skill-row__roll">
+                <div class="skill-row__bg" aria-hidden="true"></div>
+                <div class="skill-row__main">
+                  <div class="skill-row__top">
+                    <h4 class="skill-row__name">GitHub</h4>
+                    <p class="skill-row__desc">원격 저장소·브랜치·커밋 기반 버전 관리 및 협업</p>
                   </div>
                   <div class="skill-row__bar-wrap" aria-hidden="true">
                     <span class="skill-row__track"><span class="skill-row__fill js-skill-fill"></span></span>
@@ -636,7 +673,7 @@
               </article>
 
               <article class="work-card work-card--wide work-card--brand3">
-                <a class="work-card__link" href="#" aria-label="BlueBuddy Kit 프로젝트 상세 보기">
+                <a class="work-card__link" href="bluebuddy/index.html" aria-label="BlueBuddy 프로젝트 상세 보기">
                   <div class="work-card__media">
                     <img src="assets/images/logo-company-3.webp" alt="브랜드 로고 3" loading="lazy" decoding="async"
                       class="work-card__brand-image work-card__brand-image--company" />
@@ -788,7 +825,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20260422-hero6"></script>
 </body>
 
 </html>

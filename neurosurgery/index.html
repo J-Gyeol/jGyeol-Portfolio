@@ -18,11 +18,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="css/neurosurgery.css" />
+    <link rel="stylesheet" href="../assets/css/work-detail.css" />
     <script>
       (function () {
         try {
-          var t = localStorage.getItem("neurosurgery-theme");
+          var t =
+            localStorage.getItem("work-detail-theme") ||
+            localStorage.getItem("neurosurgery-theme") ||
+            localStorage.getItem("dn-publishment-theme") ||
+            localStorage.getItem("bluebuddy-theme");
           document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
         } catch (e) {
           document.documentElement.setAttribute("data-theme", "light");
@@ -134,7 +138,7 @@
                 <span class="ns-next__current" aria-current="page">이젠신경외과</span>
               </li>
               <li class="ns-next__item"><a class="ns-next__link" href="../dn-publishment/index.html">도서출판 다운</a></li>
-              <li class="ns-next__item"><a class="ns-next__link" href="#">BlueBuddy</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../bluebuddy/index.html">BlueBuddy</a></li>
               <li class="ns-next__item"><a class="ns-next__link" href="#">노랑풍선</a></li>
               <li class="ns-next__item"><a class="ns-next__link" href="#">NETFLIX</a></li>
               <li class="ns-next__item"><a class="ns-next__link" href="#">PLANET</a></li>
@@ -153,6 +157,6 @@
       </div>
     </footer>
 
-    <script src="js/neurosurgery.js"></script>
+    <script src="../assets/js/work-detail.js"></script>
   </body>
 </html>

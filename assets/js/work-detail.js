@@ -1,17 +1,27 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "dn-publishment-theme";
+  var STORAGE_KEY = "work-detail-theme";
   var header = document.querySelector(".js-ns-header");
   var revealEls = document.querySelectorAll(".js-ns-reveal");
   var themeToggle = document.querySelector(".js-ns-theme-toggle");
 
   function getStoredTheme() {
     try {
-      return localStorage.getItem(STORAGE_KEY);
+      var current = localStorage.getItem(STORAGE_KEY);
+      if (current === "dark" || current === "light") return current;
+      var legacy =
+        localStorage.getItem("neurosurgery-theme") ||
+        localStorage.getItem("dn-publishment-theme") ||
+        localStorage.getItem("bluebuddy-theme");
+      if (legacy === "dark" || legacy === "light") {
+        localStorage.setItem(STORAGE_KEY, legacy);
+        return legacy;
+      }
     } catch (e) {
       return null;
     }
+    return null;
   }
 
   function setStoredTheme(theme) {

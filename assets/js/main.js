@@ -302,77 +302,128 @@
     );
   }
 
-  /** Hero 1st panel background: pointer-follow subtle parallax */
-  function initHeroPointerParallax() {
+  /**
+   * Hero 패널 1: codepen.html과 동일 — tgX/Y = clientX/Y(뷰포트 좌표), lerp로 부드럽게 추적.
+   * 패널 밖으로 나가면 타깃을 패널 중앙의 화면 좌표로 되돌림.
+   */
+  function initHeroPanel1BlobInteractive() {
     if (prefersReducedMotion) return;
     if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
 
     var hero = document.querySelector(".hero-panel--1");
-    var bg = document.querySelector(".hero-panel__bg--1");
-    if (!hero || !bg) return;
+    var inter = document.querySelector(".js-hero-blob-interactive");
+    if (!hero || !inter) return;
 
-    var moveX = gsap.quickTo(bg, "x", { duration: 0.42, ease: "power3.out" });
-    var moveY = gsap.quickTo(bg, "y", { duration: 0.42, ease: "power3.out" });
-    var moveMX = gsap.quickTo(bg, "--hero-mx", { duration: 0.34, ease: "power2.out", unit: "%" });
-    var moveMY = gsap.quickTo(bg, "--hero-my", { duration: 0.34, ease: "power2.out", unit: "%" });
-    var maxShift = 14;
+    var curX = 0;
+    var curY = 0;
+    var tgX = 0;
+    var tgY = 0;
+    var ease = 14;
+
+    function heroCenterClient() {
+      var r = hero.getBoundingClientRect();
+      return {
+        x: r.left + r.width / 2,
+        y: r.top + r.height / 2,
+      };
+    }
+
+    function syncNeutral() {
+      var c = heroCenterClient();
+      tgX = c.x;
+      tgY = c.y;
+      curX = c.x;
+      curY = c.y;
+    }
+
+    syncNeutral();
+
+    function tick() {
+      curX += (tgX - curX) / ease;
+      curY += (tgY - curY) / ease;
+      inter.style.transform = "translate(" + Math.round(curX) + "px," + Math.round(curY) + "px)";
+      requestAnimationFrame(tick);
+    }
 
     function onMove(e) {
-      var rect = hero.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
-
-      var nx = (e.clientX - rect.left) / rect.width - 0.5;
-      var ny = (e.clientY - rect.top) / rect.height - 0.5;
-      moveX(nx * maxShift);
-      moveY(ny * maxShift);
-      moveMX((nx + 0.5) * 100);
-      moveMY((ny + 0.5) * 100);
+      tgX = e.clientX;
+      tgY = e.clientY;
     }
 
     function onLeave() {
-      moveX(0);
-      moveY(0);
-      moveMX(50);
-      moveMY(50);
+      var c = heroCenterClient();
+      tgX = c.x;
+      tgY = c.y;
     }
 
     hero.addEventListener("mousemove", onMove, { passive: true });
     hero.addEventListener("mouseleave", onLeave, { passive: true });
-    hero.addEventListener("blur", onLeave, { passive: true });
+    window.addEventListener(
+      "resize",
+      function () {
+        if (!hero.matches(":hover")) syncNeutral();
+      },
+      { passive: true }
+    );
+
+    requestAnimationFrame(tick);
   }
 
   function initSkillBridgeParallax() {
     var bridge = document.querySelector(".skill-bridge");
-    var bg = document.querySelector(".js-skill-bridge-bg");
+    var bg = document.querySelector(".skill-bridge__media .skill-bridge__bg");
     var copy = document.querySelector(".skill-bridge__copy");
     var line1 = document.querySelector(".js-skill-bridge-line1");
     var line2 = document.querySelector(".js-skill-bridge-line2");
     if (!bridge || !bg) return;
 
+    function stripBridgeBgGsap() {
+      gsap.killTweensOf(bg);
+      if (typeof ScrollTrigger !== "undefined" && ScrollTrigger.getAll) {
+        ScrollTrigger.getAll().forEach(function (st) {
+          var anim = st.animation;
+          if (!anim || typeof anim.targets !== "function") return;
+          var tg = anim.targets();
+          var list = gsap.utils.toArray(tg || []);
+          if (list.indexOf(bg) !== -1) st.kill();
+        });
+      }
+      gsap.set(bg, { clearProps: "transform,translate,rotate,scale" });
+      if (bg.style) {
+        bg.style.removeProperty("transform");
+        bg.style.removeProperty("translate");
+        bg.style.removeProperty("rotate");
+        bg.style.removeProperty("scale");
+      }
+    }
+
+    stripBridgeBgGsap();
+
+    if (typeof ScrollTrigger !== "undefined" && ScrollTrigger.addEventListener) {
+      ScrollTrigger.addEventListener("refresh", stripBridgeBgGsap);
+    }
+
+    if (typeof MutationObserver !== "undefined") {
+      var bgStyleMo = new MutationObserver(function () {
+        bgStyleMo.disconnect();
+        stripBridgeBgGsap();
+        requestAnimationFrame(function () {
+          bgStyleMo.observe(bg, { attributes: true, attributeFilter: ["style"] });
+        });
+      });
+      bgStyleMo.observe(bg, { attributes: true, attributeFilter: ["style"] });
+    }
+
     if (prefersReducedMotion) {
-      gsap.set([bg, copy, line1, line2].filter(Boolean), { clearProps: "transform" });
+      gsap.set([copy, line1, line2].filter(Boolean), { clearProps: "transform" });
       return;
     }
 
-    // 스크럽 없이도 체감되도록 진입/복귀를 명시적으로 제어
-    gsap.set([bg, copy, line1, line2].filter(Boolean), { force3D: true });
+    gsap.set([copy, line1, line2].filter(Boolean), { force3D: true });
 
-    gsap.fromTo(
-      bg,
-      { y: 0 },
-      {
-        y: 110,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: bridge,
-          start: "top 92%",
-          end: "bottom top",
-          toggleActions: "play none none reverse",
-          invalidateOnRefresh: true,
-        },
-      }
-    );
+    requestAnimationFrame(function () {
+      requestAnimationFrame(stripBridgeBgGsap);
+    });
 
     if (copy) {
       gsap.fromTo(
@@ -953,16 +1004,41 @@
     });
   }
 
+  /** 히어로 패널 1: 마우스 오브 difference가 타이포 색을 왜곡하지 않도록 body 클래스 전환 */
+  function initHeroPanel1OrbContext() {
+    if (prefersReducedMotion) return;
+    if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
+
+    var panel = document.querySelector(".hero-panel--1");
+    if (!panel) return;
+
+    panel.addEventListener(
+      "mouseenter",
+      function () {
+        document.body.classList.add("hero-panel-1--hover");
+      },
+      { passive: true }
+    );
+    panel.addEventListener(
+      "mouseleave",
+      function () {
+        document.body.classList.remove("hero-panel-1--hover");
+      },
+      { passive: true }
+    );
+  }
+
   $(function () {
     var lenis = initLenis();
 
     initAOS();
     initMouseOrbEffect();
+    initHeroPanel1OrbContext();
     initHeaderHeight();
     initSiteMenu();
     initHeaderLightTheme();
     initHeroTitleFadeUp();
-    initHeroPointerParallax();
+    initHeroPanel1BlobInteractive();
     initHeroScroll();
     initSkillBridgeParallax();
     initWorkHorizontalScroll();

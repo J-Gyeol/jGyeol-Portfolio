@@ -1,4 +1,4 @@
-/* 도서출판 다운 작업 상세 — 메인(Work) 구역과 동일한 컨테이너(1200px), 라이트 기본 + 다크 모드 */
+/* Work detail 공통 — 모든 작업 상세 서브페이지 동일 레이아웃/토큰(1200px), 라이트 기본 + 다크 모드 */
 
 :root {
   --ns-max: 1200px;
@@ -407,7 +407,7 @@ html[data-theme="dark"] .ns-theme-toggle .ns-theme-toggle__icon--moon {
 
 .ns-meta .ns-tags {
   margin-top: 0.85rem;
-  padding-top: 0.85rem;
+  padding-top: 1.2rem;
   border-top: 1px solid var(--ns-line);
 }
 
@@ -434,7 +434,8 @@ html[data-theme="dark"] .ns-theme-toggle .ns-theme-toggle__icon--moon {
 
 /* 첫 개요 섹션: 구 hero-actions 하단 여백을 여기로 이동 */
 .ns-section[aria-labelledby="ns-overview"],
-.ns-section[aria-labelledby="dn-overview"] {
+.ns-section[aria-labelledby="dn-overview"],
+.ns-section[aria-labelledby="bb-overview"] {
   margin-top: var(--ns-overview-top-gap);
 }
 
@@ -529,6 +530,12 @@ html[data-theme="light"] .ns-btn--ghost:focus-visible {
   min-width: 0;
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.ns-meta__row span,
+.ns-meta__row a {
+  line-height: 1.3;
+  display: block;
 }
 
 .ns-section {

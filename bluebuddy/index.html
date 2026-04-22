@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueBuddy — Work Detail | jGyeol Portfolio</title>
+    <meta
+      name="description"
+      content="BlueBuddy TravelOcean 다이빙·여행 브랜드 웹 — 기획 의도, 구현 방식, 협업 배포 링크를 정리한 작업 상세입니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/work-detail.css" />
+    <script>
+      (function () {
+        try {
+          var t =
+            localStorage.getItem("work-detail-theme") ||
+            localStorage.getItem("neurosurgery-theme") ||
+            localStorage.getItem("dn-publishment-theme") ||
+            localStorage.getItem("bluebuddy-theme");
+          document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="ns-header js-ns-header" role="banner">
+      <div class="ns-header__inner">
+        <a class="ns-header__brand" href="../index.html#project">jGyeol's Portfolio.</a>
+        <div class="ns-header__actions">
+          <a class="ns-header__link" href="../index.html#project">← Work</a>
+          <a
+            class="ns-header__cta"
+            href="https://hongju2504-collab.github.io/TravelOcean/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Live site</a
+          >
+          <button
+            type="button"
+            class="ns-theme-toggle js-ns-theme-toggle"
+            aria-pressed="false"
+            aria-label="다크 모드로 전환"
+            title="다크 모드"
+          >
+            <svg
+              class="ns-theme-toggle__icon ns-theme-toggle__icon--moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg
+              class="ns-theme-toggle__icon ns-theme-toggle__icon--sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="ns-main">
+      <div class="ns-shell">
+        <article class="ns-article">
+          <header class="ns-reveal js-ns-reveal js-ns-article-header">
+            <p class="ns-kicker">Work Detail</p>
+            <h1 class="ns-title">BlueBuddy · TravelOcean</h1>
+            <p class="ns-lead">
+              일상의 무게를 내려놓고 바다 한가운데서 안식을 발견한다는 메시지 아래,
+              <strong class="ns-strong">세계 명소 다이빙 스팟·시즌 추천·입문자 안내·스타일 추천 퀴즈</strong>까지 한 브랜드 흐름으로 묶은
+              반응형 여행·다이빙 소개 웹입니다. 협업 저장소 기준 배포 페이지를 참고해 구성했습니다.
+            </p>
+            <div class="ns-hero-actions">
+              <a
+                class="ns-btn"
+                href="https://hongju2504-collab.github.io/TravelOcean/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >라이브 사이트 보기</a
+              >
+            </div>
+          </header>
+
+          <div class="ns-meta ns-reveal js-ns-reveal">
+            <div class="ns-meta__row"><strong>Role</strong><span>디자인 · 퍼블리싱 (팀 협업)</span></div>
+            <div class="ns-meta__row"><strong>Output</strong><span>반응형 원페이지·멀티 섹션 웹 (브랜드 랜딩)</span></div>
+            <div class="ns-meta__row">
+              <strong>Link</strong
+              ><a
+                class="ns-inline-link"
+                href="https://hongju2504-collab.github.io/TravelOcean/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >hongju2504-collab.github.io/TravelOcean</a
+              >
+            </div>
+            <ul class="ns-tags">
+              <li>Figma</li>
+              <li>Photoshop</li>
+              <li>HTML / CSS</li>
+              <li>jQuery</li>
+              <li>Responsive</li>
+            </ul>
+          </div>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="bb-overview">
+            <h2 id="bb-overview">프로젝트 개요</h2>
+            <p>
+              <strong class="ns-strong">BlueBuddy</strong>라는 여행·다이빙 브랜드를 전제로, 그레이트 블루홀·샤크 욜란다 리프·블루코너 등
+              대표 포인트를 카드 형태로 소개하고 <em class="ns-em">Season’s Best</em>(팔라우·몰디브·보홀 등 시즌 추천),
+              입문자용 안내 문구, <strong class="ns-strong">Find Your Diving Style</strong> 형태의 스타일 추천 흐름 등으로 이용자가 목적지와 콘셉트를 빠르게 파악하도록
+              배치했습니다.
+            </p>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="bb-plan">
+            <h2 id="bb-plan">기획 의도</h2>
+            <p>
+              라이브 사이트와 동일하게, 첫 화면에서 브랜드 톤(고요·탐험·미지의 아름다움)을 잡고 이어서
+              <strong class="ns-strong">시각적으로 강한 포인트(블루홀·리프·코너)</strong>로 시선을 이동시킨 뒤,
+              시즌·입문·커뮤니티로 내려가며 행동 동기가 생기도록 섹션 순서를 맞췄습니다.
+            </p>
+            <ul class="ns-list">
+              <li>히어로 카피로 감성·브랜드를 고정하고, 명소 카드로 구체적 이미지를 제공</li>
+              <li>Season’s Best로 “지금 가기 좋은 곳”을 한눈에 묶어 탐색 비용을 줄임</li>
+              <li>입문자 섹션과 스타일 찾기로 문턱을 낮추고 체류 시간을 확보</li>
+            </ul>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="bb-impl">
+            <h2 id="bb-impl">구현 방식</h2>
+            <p>
+              시맨틱한 섹션 구분과 반복 카드·타이포 리듬을 우선했고, 인터랙션과 레이아웃 보조는
+              <strong class="ns-strong">jQuery</strong> 및 공통 스크립트 패턴으로 정리했습니다. 이미지·카피 밀도가 높은 구간은
+              스크롤 구간별 여백과 대비를 맞춰 가독성을 유지했습니다.
+            </p>
+            <ul class="ns-list">
+              <li>브랜드 로고·히어로·카드 그리드 등 반복 패턴을 재사용 가능한 클래스 단위로 마크업</li>
+              <li>협업 배포 환경(GitHub Pages)에서 경로·리소스가 깨지지 않도록 상대 경로와 파일명 규칙 통일</li>
+              <li>의미 있는 제목 계층과 대체 텍스트로 기본 접근성 확보</li>
+            </ul>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="bb-tools">
+            <h2 id="bb-tools">사용 툴</h2>
+            <p>시안·그래픽 작업과 코드 작성에 사용한 도구입니다.</p>
+            <div class="ns-tools">
+              <span class="ns-tool">Figma</span><span class="ns-tool">Photoshop</span><span class="ns-tool">VS Code</span
+              ><span class="ns-tool">HTML5</span><span class="ns-tool">CSS3</span><span class="ns-tool">jQuery</span
+              ><span class="ns-tool">Git / GitHub</span>
+            </div>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="bb-shot">
+            <h2 id="bb-shot">작업물 미리보기</h2>
+            <p>
+              전체 화면은 상단 <strong class="ns-strong">Live site</strong> 링크에서 확인할 수 있습니다. 아래 썸네일은 포트폴리오용 브랜드 에셋을 넣은 자리이며,
+              추후 TravelOcean 스크린샷으로 교체할 수 있습니다.
+            </p>
+            <figure class="ns-shot">
+              <img
+                src="../assets/images/logo-company-3.webp"
+                width="560"
+                height="120"
+                alt="BlueBuddy 브랜드 로고 및 TravelOcean 톤 시안"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                브랜드 아이덴티티: 라이브 사이트와 동일한 오션 무드의 로고·컬러를 작업물 카드와 맞춰 두었습니다.
+              </figcaption>
+            </figure>
+            <figure class="ns-shot">
+              <img
+                src="../assets/images/logo-company-3.webp"
+                width="560"
+                height="120"
+                alt="TravelOcean 레이아웃 참고용 배너"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                명소·시즌 베스트 등 카드형 레이아웃은 라이브 페이지의 Season’s Best·포인트 소개 구역 구성을 참고했습니다.
+              </figcaption>
+            </figure>
+          </section>
+
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="bb-reflect">
+            <h2 id="bb-reflect">회고</h2>
+            <p>
+              여행·다이빙 분야는 이미지와 문장의 밀도가 동시에 올라가기 쉬워, 한 화면에서 “브랜드 한 줄”과 “구체적 목적지”가
+              서로 밀지 않도록 간격과 위계를 반복해서 조정했습니다. 협업 배포 URL을 단일 소스로 삼아 카피·섹션 구조를 맞추었고,
+              이후 스크린샷 자산만 보강해도 설득력이 높아지도록 문단 구성을 단순하게 유지했습니다.
+            </p>
+          </section>
+
+          <section class="ns-section ns-next ns-reveal js-ns-reveal" aria-labelledby="bb-next-heading">
+            <h2 id="bb-next-heading">Next</h2>
+            <ul class="ns-next__list">
+              <li class="ns-next__item"><a class="ns-next__link" href="../neurosurgery/index.html">이젠신경외과</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../dn-publishment/index.html">도서출판 다운</a></li>
+              <li class="ns-next__item ns-next__item--current">
+                <span class="ns-next__current" aria-current="page">BlueBuddy</span>
+              </li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">노랑풍선</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">NETFLIX</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">PLANET</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="#">INVEST</a></li>
+            </ul>
+            <p class="ns-next__back">
+              <a class="ns-next__home" href="../index.html#project" aria-label="포트폴리오 Work 섹션으로 돌아가기"
+                ><span class="ns-next__home-arrow" aria-hidden="true">←</span><span class="ns-next__home-label">GO HOME</span></a
+              >
+            </p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="ns-footer">
+      <div class="ns-footer__inner ns-shell">
+        <p class="ns-footer__copy">© jGyeol — BlueBuddy / TravelOcean case study</p>
+        <a class="ns-footer__home" href="../index.html">Go Home</a>
+      </div>
+    </footer>
+
+    <script src="../assets/js/work-detail.js"></script>
+  </body>
+</html>
