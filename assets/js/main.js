@@ -24,6 +24,8 @@
   function initLenis() {
     if (prefersReducedMotion) return null;
     if (typeof Lenis === "undefined") return null;
+    // 모바일 터치 환경에서는 기본 스크롤이 더 안정적이어서 Lenis를 비활성화
+    if (window.matchMedia("(pointer: coarse)").matches) return null;
 
     var lenis = new Lenis({
       duration: 1.08,
@@ -315,6 +317,12 @@
     var line1 = document.querySelector(".js-skill-bridge-line1");
     var line2 = document.querySelector(".js-skill-bridge-line2");
     if (!bridge || !bg) return;
+
+    // 모바일에서는 브리지 패럴랙스/스크롤 연동을 줄여 경계 구간 끊김을 방지
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      gsap.set([bg, copy, line1, line2].filter(Boolean), { clearProps: "transform" });
+      return;
+    }
 
     gsap.set(bg, { clearProps: "transform,translate,rotate,scale" });
 

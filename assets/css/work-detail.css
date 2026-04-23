@@ -534,7 +534,10 @@ html[data-theme="dark"] .ns-theme-toggle .ns-theme-toggle__icon--moon {
 .ns-section[aria-labelledby="ns-overview"],
 .ns-section[aria-labelledby="dn-overview"],
 .ns-section[aria-labelledby="bb-overview"],
-.ns-section[aria-labelledby="yb-overview"] {
+.ns-section[aria-labelledby="yb-overview"], 
+.ns-section[aria-labelledby="planet-overview"], 
+.ns-section[aria-labelledby="invest-overview"], 
+.ns-section[aria-labelledby="netflix-overview"] {
   margin-top: var(--ns-overview-top-gap);
 }
 
@@ -721,6 +724,62 @@ html[data-theme="light"] .ns-btn--ghost:focus-visible {
   background: var(--shot-cap-bg);
 }
 
+.ns-shot__dropdown {
+  border-top: 1px solid var(--ns-line);
+  background: color-mix(in srgb, var(--shot-bg) 90%, #fff 10%);
+}
+
+.ns-shot__dropdown summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: clamp(0.5rem, calc(0.4rem + 0.35vw), 0.65rem) clamp(0.75rem, calc(0.55rem + 0.55vw), 1rem);
+  font-size: clamp(0.72rem, calc(0.66rem + 0.18vw), 0.84rem);
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+}
+
+.ns-shot__dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.ns-shot__dropdown summary::after {
+  content: "▾";
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.ns-shot__dropdown[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.ns-shot__dropdown-images {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: clamp(0.45rem, 1.2vw, 0.7rem);
+  padding: 0 clamp(0.6rem, 1.2vw, 0.8rem) clamp(0.6rem, 1.2vw, 0.8rem);
+  align-items: stretch;
+}
+
+.ns-shot__dropdown-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--ns-line);
+  background: #000;
+  object-fit: contain;
+}
+
+.ns-shot__dropdown-images img:nth-child(2) {
+  /* width: 72%; */
+  justify-self: center;
+}
+
 .ns-shot-placeholder {
   aspect-ratio: 16 / 10;
   display: flex;
@@ -807,6 +866,7 @@ html[data-theme="light"] .ns-btn--ghost:focus-visible {
   .ns-next__item--current:nth-child(even) .ns-next__current {
     margin: 0.2rem 0 0.2rem 0.2rem;
   }
+
 }
 
 /* Next: 현재 작업 상세 — 링크 대신 강조 배경(포트폴리오 메인 카드 순서와 동일한 7항목 중 해당 행) */
@@ -957,3 +1017,10 @@ html[data-theme="light"] .ns-btn--ghost:focus-visible {
     transition: none;
   }
 }
+
+
+@media (max-width: 767px) {
+  .ns-shot__dropdown-images {
+    grid-template-columns: auto;
+  }
+} 

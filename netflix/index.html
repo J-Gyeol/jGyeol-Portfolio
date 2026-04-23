@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>도서출판 다운 — Work Detail | jGyeol Portfolio</title>
+    <title>NETFLIX — Work Detail | jGyeol Portfolio</title>
     <meta
       name="description"
-      content="도서출판 다운 브랜드 웹사이트 — 기획 의도, 구현 방식, 사용 툴을 정리한 작업 상세입니다."
+      content="NETFLIX 클론 웹사이트 — 기획 의도, 구현 방식, 사용 툴을 정리한 작업 상세입니다."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,8 @@
             localStorage.getItem("work-detail-theme") ||
             localStorage.getItem("neurosurgery-theme") ||
             localStorage.getItem("dn-publishment-theme") ||
-            localStorage.getItem("bluebuddy-theme");
+            localStorage.getItem("bluebuddy-theme") ||
+            localStorage.getItem("netflix-theme");
           document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
         } catch (e) {
           document.documentElement.setAttribute("data-theme", "light");
@@ -42,7 +43,7 @@
         <a class="ns-header__brand" href="../index.html#project">jGyeol's Portfolio.</a>
         <div class="ns-header__actions">
           <a class="ns-header__link" href="../index.html#project">← Work</a>
-          <a class="ns-header__cta" href="https://j-gyeol.github.io/DN-Publishment/" target="_blank" rel="noopener noreferrer">Live site</a>
+          <a class="ns-header__cta" href="https://j-gyeol.github.io/NETFLIX/" target="_blank" rel="noopener noreferrer">Live site</a>
           <button type="button" class="ns-theme-toggle js-ns-theme-toggle" aria-pressed="false" aria-label="다크 모드로 전환" title="다크 모드">
             <svg class="ns-theme-toggle__icon ns-theme-toggle__icon--moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
             <svg class="ns-theme-toggle__icon ns-theme-toggle__icon--sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" /></svg>
@@ -56,141 +57,152 @@
         <article class="ns-article">
           <header class="ns-reveal js-ns-reveal js-ns-article-header">
             <p class="ns-kicker">Work Detail</p>
-            <h1 class="ns-title">도서출판 다운 웹사이트</h1>
+            <h1 class="ns-title">NETFLIX 클론 웹사이트</h1>
             <p class="ns-lead">
-              출판사의 정체성과 서비스 영역을 소개하고, 기획부터 유통까지 이어지는 <strong class="ns-strong">출판 프로세스(6단계)</strong>·포트폴리오·문의까지 한 흐름으로 담은
-              원페이지형 브랜드 사이트입니다.
+              넷플릭스 메인 페이지를 참고해
+              <strong class="ns-strong">배너, 랭킹 슬라이드, FAQ, 멤버십 유도 섹션</strong>을
+              반응형으로 구현한 클론 프로젝트입니다.
             </p>
             <div class="ns-hero-actions">
-              <a class="ns-btn" href="https://j-gyeol.github.io/DN-Publishment/" target="_blank" rel="noopener noreferrer">라이브 사이트 보기</a>
+              <a class="ns-btn" href="https://j-gyeol.github.io/NETFLIX/" target="_blank" rel="noopener noreferrer">라이브 사이트 보기</a>
               <a
                 class="ns-btn ns-btn--ghost"
-                href="https://www.figma.com/design/Gej9A5nmGJWzoqzgV3MLbl/%EB%8F%84%EC%84%9C%EC%B6%9C%ED%8C%90-%EB%8B%A4%EC%9A%B4?node-id=1-9&t=uz3BCLwtRJzNbeHZ-1"
+                href="https://j-gyeol.github.io/NETFLIX/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="피그마 디자인 열기"
+                aria-label="라이브 사이트 열기"
               >
-                <svg width="16" height="16" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M9.5 57C14.7467 57 19 52.7467 19 47.5V38H9.5C4.25329 38 0 42.2533 0 47.5C0 52.7467 4.25329 57 9.5 57Z" fill="#0ACF83"/>
-                  <path d="M0 28.5C0 23.2533 4.25329 19 9.5 19H19V38H9.5C4.25329 38 0 33.7467 0 28.5Z" fill="#A259FF"/>
-                  <path d="M0 9.5C0 4.25329 4.25329 0 9.5 0H19V19H9.5C4.25329 19 0 14.7467 0 9.5Z" fill="#F24E1E"/>
-                  <path d="M19 0H28.5C33.7467 0 38 4.25329 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"/>
-                  <path d="M38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5Z" fill="#1ABCFE"/>
-                </svg>
-                Figma 보기
+                사이트 바로가기
               </a>
             </div>
           </header>
 
           <div class="ns-meta ns-reveal js-ns-reveal">
-            <div class="ns-meta__row"><strong>Role</strong><span>기획 · 디자인 · 퍼블리싱</span></div>
-            <div class="ns-meta__row"><strong>Output</strong><span>반응형 원페이지 웹 (브랜드·포트폴리오)</span></div>
-            <div class="ns-meta__row"><strong>Link</strong><a class="ns-inline-link" href="https://j-gyeol.github.io/DN-Publishment/" target="_blank" rel="noopener noreferrer">j-gyeol.github.io/DN-Publishment</a></div>
+            <div class="ns-meta__row"><strong>Role</strong><span>기획 · 퍼블리싱 · 인터랙션 구현</span></div>
+            <div class="ns-meta__row"><strong>Output</strong><span>반응형 랜딩 페이지 클론 (넷플릭스 메인)</span></div>
+            <div class="ns-meta__row"><strong>Link</strong><a class="ns-inline-link" href="https://j-gyeol.github.io/NETFLIX/" target="_blank" rel="noopener noreferrer">j-gyeol.github.io/NETFLIX</a></div>
             <ul class="ns-tags">
-              <li>Figma</li>
-              <li>Photoshop</li>
               <li>HTML / CSS</li>
               <li>jQuery</li>
               <li>Swiper</li>
-              <li>GSAP</li>
+              <li>JavaScript</li>
               <li>Responsive</li>
             </ul>
           </div>
 
-          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="dn-overview">
-            <h2 id="dn-overview">프로젝트 개요</h2>
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="netflix-overview">
+            <h2 id="netflix-overview">프로젝트 개요</h2>
             <p>
-              가상의 출판사 <strong class="ns-strong">도서출판 다운(DAWN)</strong>을 설정하고, “이야기를 책으로, 책을 오래 남는 가치로 만듭니다”라는 메시지를 중심에 둔
-              브랜드 웹입니다. <em class="ns-em">about · 포트폴리오 · 출판 절차 · 문의</em>가 스크롤 하나로 이어지도록 구성했으며, 독자·작가와의 관계를 강조하는 카피와
-              시각 리듬을 맞췄습니다.
+              실제 넷플릭스 랜딩 페이지의 정보 흐름을 참고해
+              <strong class="ns-strong">첫 인상에서 서비스 이해와 가입 행동까지 이어지는 구조</strong>를 구성했습니다.
+              히어로 카피와 이메일 입력 폼, 콘텐츠 랭킹, 가입 이유, FAQ가 하나의 전환 흐름으로 이어지도록 설계했습니다.
             </p>
           </section>
 
-          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="dn-plan">
-            <h2 id="dn-plan">기획 의도</h2>
-            <p>출판사 사이트에서 요구되는 <strong class="ns-strong">분야별 콘셉트(문학, 인문교양, 경제·경영, 자기계발 등)</strong>와 신뢰감을 먼저 쌓고, 이어서 단계별 제작 프로세스로 전문성을 보여 주도록 순서를 잡았습니다.</p>
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="netflix-plan">
+            <h2 id="netflix-plan">기획 의도</h2>
+            <p>OTT 랜딩 페이지의 핵심인 "신뢰 + 행동 유도"를 짧은 스크롤 안에서 전달하는 것을 목표로 했습니다.</p>
             <ul class="ns-list">
-              <li>히어로 슬라이드로 브랜드 무드와 핵심 카피를 반복 노출</li>
-              <li>“나다운 책” 소개와 분야 카드로 출판 방향성을 구체화</li>
-              <li>6단계 프로세스 서술 후 포트폴리오·문의로 자연스럽게 연결</li>
+              <li>히어로/하단 가입 섹션의 CTA를 반복해 사용자 행동 유도</li>
+              <li>배너 → 인기 콘텐츠 → 혜택 → FAQ 순서로 정보 피로도 최소화</li>
+              <li>다크 톤 대비와 타이포 위계로 브랜드 무드와 가독성 동시 확보</li>
             </ul>
           </section>
 
-          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="dn-impl">
-            <h2 id="dn-impl">구현 방식</h2>
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="netflix-impl">
+            <h2 id="netflix-impl">구현 방식</h2>
             <p>
-              시맨틱한 섹션 구조 위에 <strong class="ns-strong">Swiper</strong>로 히어로 페이드 슬라이드와 커스텀 진행 표시를 구현했고, 스크롤 연출에는
-              <strong class="ns-strong">GSAP ScrollTrigger·ScrollSmoother</strong>를 사용했습니다. 인터랙션·모달·탭성 UI는 <strong class="ns-strong">jQuery</strong>로 모듈화했습니다.
+              시맨틱한 섹션 구조를 기준으로 콘텐츠를 모듈화하고,
+              <strong class="ns-strong">Swiper</strong>를 활용해 인기 콘텐츠 캐러셀을 반응형으로 구현했습니다.
+              FAQ는 <strong class="ns-strong">details/summary</strong> 패턴으로 구성해 접근성과 유지보수성을 함께 확보했습니다.
             </p>
             <ul class="ns-list">
-              <li>반복 카드·그리드·푸터 정보 블록을 재사용하기 쉬운 클래스 구조로 정리</li>
-              <li>이미지·로고에 대비와 의미가 드러나는 대체 텍스트 부여</li>
-              <li>상담 폼 라벨·포커스 흐름 등 기본 접근성 고려</li>
+              <li>브레이크포인트별 slidesPerView/spaceBetween 조정으로 디바이스 대응</li>
+              <li>이메일 입력 폼과 버튼 중심의 명확한 전환 동선 설계</li>
+              <li>모달 닫기 동작 및 기본 인터랙션을 단순 스크립트로 구성</li>
             </ul>
           </section>
 
-          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="dn-tools">
-            <h2 id="dn-tools">사용 툴</h2>
-            <p>시안·그래픽 작업과 코드 작성에 사용한 도구입니다.</p>
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="netflix-tools">
+            <h2 id="netflix-tools">사용 툴</h2>
+            <p>구현에 사용한 주요 도구입니다.</p>
             <div class="ns-tools">
-              <span class="ns-tool">Figma</span><span class="ns-tool">Photoshop</span><span class="ns-tool">VS Code</span><span class="ns-tool">HTML5</span><span class="ns-tool">CSS3</span><span class="ns-tool">jQuery</span><span class="ns-tool">Swiper</span><span class="ns-tool">GSAP</span><span class="ns-tool">Git / GitHub</span>
+              <span class="ns-tool">VS Code</span><span class="ns-tool">HTML5</span><span class="ns-tool">CSS3</span><span class="ns-tool">JavaScript</span><span class="ns-tool">jQuery</span><span class="ns-tool">Swiper</span><span class="ns-tool">Git / GitHub</span>
             </div>
           </section>
 
-          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="dn-shot">
-            <h2 id="dn-shot">작업물 미리보기</h2>
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="netflix-shot">
+            <h2 id="netflix-shot">작업물 미리보기</h2>
             <p>
-              전체 레이아웃은 라이브 사이트에서 확인하실 수 있습니다. 아래는 <strong class="ns-strong">ABOUT DN.</strong> 구역의 분야별 카드 그리드와,
-              <strong class="ns-strong">출판 프로세스(PROCESS)</strong> 구역에서 단계별로 쌓이는 스택 카드 UI를 각각 발췌한 화면입니다.
+              기본 화면은 PC 기준으로 먼저 보여주고, 태블릿/모바일 화면은 드롭다운을 펼쳐 확인할 수 있도록 구성했습니다.
+              섹션별 반응형 변화 흐름을 간결하게 비교할 수 있습니다.
             </p>
             <figure class="ns-shot">
-              <img
-                src="../assets/images/logo-company-2-about.webp"
-                width="1200"
-                height="675"
-                alt="도서출판 다운 ABOUT DN. 섹션 — 분야 카드 그리드"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                ABOUT DN.: 집중 분야에 대한 인트로 카피와 VIEW MORE, 문학·인문교양·경제·경영 등 분야별 이미지 카드가 가로로 배치된 구역. 하단에는 기업명 반복 타이포 배너.
-              </figcaption>
+              <img src="../assets/images/logo-company-4-hero.webp" width="1200" height="675" alt="NETFLIX 히어로 섹션 미리보기 PC" loading="lazy" decoding="async" />
+              <details class="ns-shot__dropdown">
+                <summary>TB / MO 이미지 보기</summary>
+                <div class="ns-shot__dropdown-images">
+                  <img src="../assets/images/logo-company-4-hero-tb.webp" width="1200" height="675" alt="NETFLIX 히어로 섹션 미리보기 태블릿" loading="lazy" decoding="async" />
+                  <img src="../assets/images/logo-company-4-hero-mo.webp" width="1200" height="675" alt="NETFLIX 히어로 섹션 미리보기 모바일" loading="lazy" decoding="async" />
+                </div>
+              </details>
+              <figcaption>Hero: 메인 카피와 이메일 CTA가 배치된 첫 화면입니다.</figcaption>
             </figure>
             <figure class="ns-shot">
-              <img
-                src="../assets/images/logo-company-2-process.webp"
-                width="1200"
-                height="675"
-                alt="도서출판 다운 출판 프로세스 — 단계별 스택 카드(유통·출간 이후)"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                PROCESS: 6단계 중 한 화면(예: 06 유통 · 출간 이후). 단계 번호·제목·본문이 담긴 카드가 겹쳐 보이는 스택 연출과, 텍스트 영역과 서점 이미지를 좌우로 나눈 카드 레이아웃.
-              </figcaption>
+              <img src="../assets/images/logo-company-4-contents.webp" width="1200" height="675" alt="NETFLIX 콘텐츠 섹션 미리보기 PC" loading="lazy" decoding="async" />
+              <details class="ns-shot__dropdown">
+                <summary>TB / MO 이미지 보기</summary>
+                <div class="ns-shot__dropdown-images">
+                  <img src="../assets/images/logo-company-4-contents-tb.webp" width="1200" height="675" alt="NETFLIX 콘텐츠 섹션 미리보기 태블릿" loading="lazy" decoding="async" />
+                  <img src="../assets/images/logo-company-4-contents-mo.webp" width="1200" height="675" alt="NETFLIX 콘텐츠 섹션 미리보기 모바일" loading="lazy" decoding="async" />
+                </div>
+              </details>
+              <figcaption>Contents: 인기 콘텐츠/혜택 카드 중심의 본문 구성을 담았습니다.</figcaption>
+            </figure>
+            <figure class="ns-shot">
+              <img src="../assets/images/logo-company-4-qna.webp" width="1200" height="675" alt="NETFLIX FAQ 섹션 미리보기 PC" loading="lazy" decoding="async" />
+              <details class="ns-shot__dropdown">
+                <summary>TB / MO 이미지 보기</summary>
+                <div class="ns-shot__dropdown-images">
+                  <img src="../assets/images/logo-company-4-qna-tb.webp" width="1200" height="675" alt="NETFLIX FAQ 섹션 미리보기 태블릿" loading="lazy" decoding="async" />
+                  <img src="../assets/images/logo-company-4-qna-mo.webp" width="1200" height="675" alt="NETFLIX FAQ 섹션 미리보기 모바일" loading="lazy" decoding="async" />
+                </div>
+              </details>
+              <figcaption>FAQ: 자주 묻는 질문 아코디언 구조를 확인할 수 있는 구간입니다.</figcaption>
+            </figure>
+            <figure class="ns-shot">
+              <img src="../assets/images/logo-company-4-footer.webp" width="1200" height="675" alt="NETFLIX 푸터 섹션 미리보기 PC" loading="lazy" decoding="async" />
+              <details class="ns-shot__dropdown">
+                <summary>TB / MO 이미지 보기</summary>
+                <div class="ns-shot__dropdown-images">
+                  <img src="../assets/images/logo-company-4-footer-tb.webp" width="1200" height="675" alt="NETFLIX 푸터 섹션 미리보기 태블릿" loading="lazy" decoding="async" />
+                  <img src="../assets/images/logo-company-4-footer-mo.webp" width="1200" height="675" alt="NETFLIX 푸터 섹션 미리보기 모바일" loading="lazy" decoding="async" />
+                </div>
+              </details>
+              <figcaption>Footer: 하단 가입/푸터 정보 구간의 반응형 레이아웃을 비교할 수 있습니다.</figcaption>
             </figure>
           </section>
 
-          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="dn-reflect">
-            <h2 id="dn-reflect">회고</h2>
+          <section class="ns-section ns-reveal js-ns-reveal" aria-labelledby="netflix-reflect">
+            <h2 id="netflix-reflect">회고</h2>
             <p>
-              문학·출판 계열 사이트는 여백과 타이포 위계가 브랜드 인상을 좌우합니다. 장식보다 읽히는 문장과 섹션 간격을 맞추는 데 시간을 들였고, 스크롤 모션을 과하게 쓰지 않고
-              콘텐츠 전달을 우선했습니다. 이후 도서 이미지 자산만 교체해도 포트폴리오 섹션이 확장되도록 마크업을 단순하게 유지했습니다.
+              클론 프로젝트에서 중요한 것은 단순한 화면 복제가 아니라 사용자 흐름의 재현이라는 점을 체감했습니다.
+              섹션 간 리듬, CTA 반복 위치, 모바일 가독성을 함께 다루며 실무형 랜딩 구조를 빠르게 구현하는 경험을 얻었습니다.
             </p>
           </section>
 
-          <section class="ns-section ns-next ns-reveal js-ns-reveal" aria-labelledby="dn-next-heading">
-            <h2 id="dn-next-heading">Next</h2>
+          <section class="ns-section ns-next ns-reveal js-ns-reveal" aria-labelledby="netflix-next-heading">
+            <h2 id="netflix-next-heading">Next</h2>
             <ul class="ns-next__list">
               <li class="ns-next__item"><a class="ns-next__link" href="../neurosurgery/index.html">이젠신경외과</a></li>
-              <li class="ns-next__item ns-next__item--current">
-                <span class="ns-next__current" aria-current="page">도서출판 다운</span>
-              </li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../dn-publishment/index.html">도서출판 다운</a></li>
               <li class="ns-next__item"><a class="ns-next__link" href="../bluebuddy/index.html">BlueBuddy</a></li>
-              <li class="ns-next__item"><a class="ns-next__link" href="#">노랑풍선</a></li>
-              <li class="ns-next__item"><a class="ns-next__link" href="#">NETFLIX</a></li>
-              <li class="ns-next__item"><a class="ns-next__link" href="#">PLANET</a></li>
-              <li class="ns-next__item"><a class="ns-next__link" href="#">INVEST</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../yellow-balloon/index.html">노랑풍선</a></li>
+              <li class="ns-next__item ns-next__item--current">
+                <span class="ns-next__current" aria-current="page">NETFLIX</span>
+              </li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../planet/index.html">PLANET</a></li>
+              <li class="ns-next__item"><a class="ns-next__link" href="../invest/index.html">INVEST</a></li>
             </ul>
             <p class="ns-next__back"><a class="ns-next__home" href="../index.html#project" aria-label="포트폴리오 Work 섹션으로 돌아가기"><span class="ns-next__home-arrow" aria-hidden="true">←</span><span class="ns-next__home-label">GO HOME</span></a></p>
           </section>
@@ -200,7 +212,7 @@
 
     <footer class="ns-footer">
       <div class="ns-footer__inner ns-shell">
-        <p class="ns-footer__copy">© jGyeol — DN Publishment case study</p>
+        <p class="ns-footer__copy">© jGyeol — NETFLIX case study</p>
         <a class="ns-footer__home" href="../index.html">Go Home</a>
       </div>
     </footer>
