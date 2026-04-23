@@ -5,15 +5,9 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /**
-   * scrub: true — 스크롤과 1:1 (핀 히어로 + Lenis에서 지연 스크럽이면 경계 튕김 유발)
-   * scrub: 0.65~1 — 지연 스무딩(초). 브리지·섹션 등장은 같은 값으로 통일
-   */
-  var HERO_SCRUB = true;
-  var PAGE_SCRUB = 0.75;
-
   function refreshScrollTriggersHard() {
     if (typeof ScrollTrigger === "undefined") return;
+    if (typeof ScrollTrigger.getAll === "function" && ScrollTrigger.getAll().length === 0) return;
     ScrollTrigger.refresh();
   }
 
@@ -41,7 +35,9 @@
       },
     });
 
-    lenis.on("scroll", ScrollTrigger.update);
+    if (typeof ScrollTrigger !== "undefined") {
+      lenis.on("scroll", ScrollTrigger.update);
+    }
 
     gsap.ticker.add(function (time) {
       lenis.raf(time * 1000);
@@ -60,6 +56,21 @@
       offset: 80,
       disable: prefersReducedMotion ? true : false,
     });
+  }
+
+  function createInviewObserver(targets, options, onChange) {
+    if (!window.IntersectionObserver) return null;
+    var list = Array.isArray(targets) ? targets.filter(Boolean) : [targets].filter(Boolean);
+    if (!list.length) return null;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        onChange(entry);
+      });
+    }, options || {});
+    list.forEach(function (el) {
+      io.observe(el);
+    });
+    return io;
   }
 
   /** 실제 헤더 바 높이 → --header-h (고정 px와 불일치로 생기는 메뉴·딤 간격 제거) */
@@ -188,94 +199,22 @@
   function initHeroScroll() {
     var $root = $(".hero-pinned");
     if (!$root.length) return;
+    var root = $root[0];
+    var panel1 = root.querySelector(".hero-panel--1");
+    var panel2 = root.querySelector(".hero-panel--2");
+    var photo = root.querySelector(".hero-about__photo.hero-reveal");
+    var title = root.querySelector(".hero-about__title.hero-reveal");
+    var body = root.querySelector(".hero-about__body.hero-reveal");
+    var tags = root.querySelector(".hero-about__tags.hero-reveal");
+    if (!panel1 || !panel2) return;
 
-    if (prefersReducedMotion) {
-      gsap.set(".hero-panel--2 .hero-reveal", { clearProps: "all" });
-      return;
-    }
-    var panel1 = ".hero-panel--1";
-    var panel2 = ".hero-panel--2";
-    var photo = ".hero-about__photo.hero-reveal";
-    var title = ".hero-about__title.hero-reveal";
-    var body = ".hero-about__body.hero-reveal";
-    var tags = ".hero-about__tags.hero-reveal";
-    var desktopQuery = "(min-width: 901px)";
-    var mobileQuery = "(max-width: 900px)";
-
-    // 브레이크포인트 변경(리사이즈) 시 데스크톱/모바일 상태를 자동 전환
-    if (gsap.matchMedia) {
-      var mm = gsap.matchMedia();
-
-      mm.add(desktopQuery, function () {
-        var isAboutColumnLayout = window.matchMedia("(max-width: 768px)").matches;
-
-        gsap.set(panel2, { yPercent: 100 });
-        if (isAboutColumnLayout) {
-          gsap.set(photo, { opacity: 0, y: 56 });
-          gsap.set([title, body], { opacity: 0, y: 46 });
-          gsap.set(tags, { opacity: 0, y: 32 });
-        } else {
-          gsap.set(photo, { opacity: 0, x: -52 });
-          gsap.set([title, body], { opacity: 0, x: 44 });
-          gsap.set(tags, { opacity: 0, y: 28 });
-        }
-
-        var tl = gsap.timeline({
-          defaults: { ease: "none" },
-          scrollTrigger: {
-            trigger: $root[0],
-            start: "top top",
-            end: "+=105%",
-            pin: true,
-            pinSpacing: true,
-            scrub: HERO_SCRUB,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            refreshPriority: 1,
-          },
-        });
-
-        tl.to(panel1, { yPercent: -100, duration: 1 }, 0)
-          .to(panel2, { yPercent: 0, duration: 1 }, 0)
-          .to(
-            photo,
-            isAboutColumnLayout
-              ? { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }
-              : { opacity: 1, x: 0, duration: 0.52, ease: "power2.out" },
-            0.38
-          )
-          .to(
-            title,
-            isAboutColumnLayout
-              ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
-              : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
-            0.44
-          )
-          .to(
-            body,
-            isAboutColumnLayout
-              ? { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }
-              : { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" },
-            0.5
-          )
-          .to(
-            tags,
-            { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" },
-            0.56
-          );
-      });
-
-      mm.add(mobileQuery, function () {
-        gsap.set([panel1, panel2, photo, title, body, tags], { clearProps: "all" });
-      });
-      return;
+    function clearHeroProps() {
+      gsap.set([panel1, panel2, photo, title, body, tags].filter(Boolean), { clearProps: "all" });
     }
 
-    // fallback: matchMedia 미지원 환경에서는 기존 데스크톱 동작 유지
-    if (!window.matchMedia(desktopQuery).matches) {
-      gsap.set([panel1, panel2, photo, title, body, tags], { clearProps: "all" });
-      return;
-    }
+    // 스크롤 기반 패널 전환을 완전히 비활성화하고 순차 레이아웃으로 표시
+    root.classList.add("hero-pinned--static");
+    clearHeroProps();
   }
 
   /** Hero 1st panel title: fade up on initial load */
@@ -377,42 +316,7 @@
     var line2 = document.querySelector(".js-skill-bridge-line2");
     if (!bridge || !bg) return;
 
-    function stripBridgeBgGsap() {
-      gsap.killTweensOf(bg);
-      if (typeof ScrollTrigger !== "undefined" && ScrollTrigger.getAll) {
-        ScrollTrigger.getAll().forEach(function (st) {
-          var anim = st.animation;
-          if (!anim || typeof anim.targets !== "function") return;
-          var tg = anim.targets();
-          var list = gsap.utils.toArray(tg || []);
-          if (list.indexOf(bg) !== -1) st.kill();
-        });
-      }
-      gsap.set(bg, { clearProps: "transform,translate,rotate,scale" });
-      if (bg.style) {
-        bg.style.removeProperty("transform");
-        bg.style.removeProperty("translate");
-        bg.style.removeProperty("rotate");
-        bg.style.removeProperty("scale");
-      }
-    }
-
-    stripBridgeBgGsap();
-
-    if (typeof ScrollTrigger !== "undefined" && ScrollTrigger.addEventListener) {
-      ScrollTrigger.addEventListener("refresh", stripBridgeBgGsap);
-    }
-
-    if (typeof MutationObserver !== "undefined") {
-      var bgStyleMo = new MutationObserver(function () {
-        bgStyleMo.disconnect();
-        stripBridgeBgGsap();
-        requestAnimationFrame(function () {
-          bgStyleMo.observe(bg, { attributes: true, attributeFilter: ["style"] });
-        });
-      });
-      bgStyleMo.observe(bg, { attributes: true, attributeFilter: ["style"] });
-    }
+    gsap.set(bg, { clearProps: "transform,translate,rotate,scale" });
 
     if (prefersReducedMotion) {
       gsap.set([copy, line1, line2].filter(Boolean), { clearProps: "transform" });
@@ -421,25 +325,22 @@
 
     gsap.set([copy, line1, line2].filter(Boolean), { force3D: true });
 
-    requestAnimationFrame(function () {
-      requestAnimationFrame(stripBridgeBgGsap);
-    });
-
     if (copy) {
-      gsap.fromTo(
-        copy,
-        { y: 26 },
-        {
-          y: -24,
-          duration: 0.95,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: bridge,
-            start: "top 92%",
-            end: "bottom top",
-            toggleActions: "play none none reverse",
-            invalidateOnRefresh: true,
-          },
+      gsap.set(copy, { y: 26 });
+      var copyPlayed = false;
+      createInviewObserver(
+        bridge,
+        { threshold: [0, 0.1, 0.3], rootMargin: "0px 0px -8% 0px" },
+        function (entry) {
+          if (entry.isIntersecting && !copyPlayed) {
+            copyPlayed = true;
+            gsap.to(copy, {
+              y: -24,
+              duration: 0.95,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+          }
         }
       );
     }
@@ -454,48 +355,62 @@
     }
 
     if (line1) {
-      gsap.fromTo(
-        line1,
-        { x: 0 },
-        {
-          x: function () {
-            var lineWidth = line1.getBoundingClientRect().width || 0;
-            var clip = getTwoCharClipPx(line1);
-            return Math.max(0, window.innerWidth - lineWidth + clip);
-          },
-          ease: "none",
-          scrollTrigger: {
-            trigger: bridge,
-            start: "top 92%",
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
+      gsap.set(line1, { x: 0 });
     }
 
     if (line2) {
-      gsap.fromTo(
-        line2,
-        { x: 0 },
-        {
-          x: function () {
-            var lineWidth = line2.getBoundingClientRect().width || 0;
-            var clip = getTwoCharClipPx(line2);
-            return -Math.max(0, window.innerWidth - lineWidth + clip);
-          },
-          ease: "none",
-          scrollTrigger: {
-            trigger: bridge,
-            start: "top 92%",
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
+      gsap.set(line2, { x: 0 });
     }
+
+    var line1Target = 0;
+    var line2Target = 0;
+    var rafId = 0;
+    var active = false;
+
+    function clamp01(n) {
+      return Math.max(0, Math.min(1, n));
+    }
+
+    function recalcTargets() {
+      if (line1) {
+        var line1Width = line1.getBoundingClientRect().width || 0;
+        var line1Clip = getTwoCharClipPx(line1);
+        line1Target = Math.max(0, window.innerWidth - line1Width + line1Clip);
+      }
+      if (line2) {
+        var line2Width = line2.getBoundingClientRect().width || 0;
+        var line2Clip = getTwoCharClipPx(line2);
+        line2Target = -Math.max(0, window.innerWidth - line2Width + line2Clip);
+      }
+    }
+
+    function updateLines() {
+      rafId = 0;
+      var rect = bridge.getBoundingClientRect();
+      var startPx = window.innerHeight * 0.92;
+      var endPx = -rect.height;
+      var progress = clamp01((startPx - rect.top) / Math.max(1, startPx - endPx));
+      if (line1) line1.style.transform = "translate3d(" + (line1Target * progress).toFixed(3) + "px,0,0)";
+      if (line2) line2.style.transform = "translate3d(" + (line2Target * progress).toFixed(3) + "px,0,0)";
+    }
+
+    function requestLineUpdate() {
+      if (!active) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(updateLines);
+    }
+
+    createInviewObserver(bridge, { threshold: [0, 0.01, 1] }, function (entry) {
+      active = entry.isIntersecting;
+      if (active) requestLineUpdate();
+    });
+
+    recalcTargets();
+    window.addEventListener("resize", function () {
+      recalcTargets();
+      requestLineUpdate();
+    });
+    window.addEventListener("scroll", requestLineUpdate, { passive: true });
   }
 
   /**
@@ -504,37 +419,35 @@
   function initSmoothScrollSections() {
     if (prefersReducedMotion) return;
 
-    function bindScrubReveal(rootSel, childSel, stOpts) {
-      stOpts = stOpts || {};
+    function bindInviewReveal(rootSel, childSel) {
       var root = document.querySelector(rootSel);
       if (!root) return;
       var targets = gsap.utils.toArray(root.querySelectorAll(childSel));
       if (!targets.length) return;
 
-      gsap.fromTo(
-        targets,
-        { opacity: 0, y: 48 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          ease: "power3.out",
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: root,
-            start: stOpts.start || "top 92%",
-            end: stOpts.end || "top 34%",
-            scrub: PAGE_SCRUB,
-            invalidateOnRefresh: true,
-          },
+      gsap.set(targets, { opacity: 0, y: 48 });
+
+      var active = false;
+      createInviewObserver(
+        root,
+        { threshold: [0, 0.18, 0.45], rootMargin: "0px 0px -14% 0px" },
+        function (entry) {
+          if (entry.isIntersecting && !active) {
+            active = true;
+            gsap.to(targets, {
+              opacity: 1,
+              y: 0,
+              stagger: 0.1,
+              duration: 0.75,
+              ease: "power3.out",
+              overwrite: "auto",
+            });
+          }
         }
       );
     }
 
-    bindScrubReveal(".skill-section", ".js-skill-head", {
-      start: "top 96%",
-      end: "top 28%",
-    });
+    bindInviewReveal(".skill-section", ".js-skill-head");
   }
 
   /** Skill: 2열 한 행씩 동시 등장 (좌/우 컬럼 함께 리빌) */
@@ -556,38 +469,18 @@
         return;
       }
 
-      ScrollTrigger.create({
-        trigger: group[0],
-        start: "top 92%",
-        onEnter: function () {
+      createInviewObserver(
+        group[0],
+        { threshold: [0, 0.08, 0.2], rootMargin: "0px 0px -8% 0px" },
+        function (entry) {
+          if (!entry.isIntersecting) return;
           group.forEach(function (el) {
             el.classList.add("is-inview");
           });
-        },
-        onEnterBack: function () {
-          group.forEach(function (el) {
-            el.classList.add("is-inview");
-          });
-        },
-      });
+        }
+      );
     });
 
-    // Skill 섹션을 완전히 벗어나면 상태 리셋 → 재진입 시 다시 리빌
-    ScrollTrigger.create({
-      trigger: ".skill-section",
-      start: "top bottom",
-      end: "bottom top",
-      onLeave: function () {
-        items.forEach(function (el) {
-          el.classList.remove("is-inview");
-        });
-      },
-      onLeaveBack: function () {
-        items.forEach(function (el) {
-          el.classList.remove("is-inview");
-        });
-      },
-    });
   }
 
   /** Skill: 행이 뷰포트에 들어올 때 프로그레스바 0% → 목표% */
@@ -614,44 +507,22 @@
         return;
       }
 
-      var tween = gsap.to(fill, {
-        width: level + "%",
-        duration: 1.2,
-        ease: "sine.out",
-        paused: true,
-      });
+      fill.style.transition = "width 1.2s cubic-bezier(.22,.61,.36,1)";
+      var played = false;
 
-      ScrollTrigger.create({
-        trigger: row,
-        start: "top 88%",
-        onEnter: function () {
-          gsap.set(fill, { width: "0%" });
-          tween.restart();
-        },
-        onEnterBack: function () {
-          gsap.set(fill, { width: "0%" });
-          tween.restart();
-        },
-      });
-    });
-
-    // Skill 섹션을 완전히 벗어나면 게이지 초기화
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top bottom",
-      end: "bottom top",
-      onLeave: function () {
-        rows.forEach(function (row) {
-          var fill = row.querySelector(".js-skill-fill");
-          if (fill) gsap.set(fill, { width: "0%" });
-        });
-      },
-      onLeaveBack: function () {
-        rows.forEach(function (row) {
-          var fill = row.querySelector(".js-skill-fill");
-          if (fill) gsap.set(fill, { width: "0%" });
-        });
-      },
+      createInviewObserver(
+        row,
+        { threshold: [0, 0.12, 0.26], rootMargin: "0px 0px -8% 0px" },
+        function (entry) {
+          if (entry.isIntersecting) {
+            if (played) return;
+            played = true;
+            requestAnimationFrame(function () {
+              fill.style.width = level + "%";
+            });
+          }
+        }
+      );
     });
   }
 
@@ -719,19 +590,25 @@
         stagger: 0.034,
       });
 
-      ScrollTrigger.create({
-        trigger: cfg.trigger,
-        start: cfg.start,
-        onEnter: function () {
-          gsap.set(chars, { yPercent: 112, opacity: 0 });
-          tl.restart();
-        },
-        onEnterBack: function () {
-          if (cfg.onEnterBack === false) return;
-          gsap.set(chars, { yPercent: 112, opacity: 0 });
-          tl.restart();
-        },
-      });
+      var triggerEl = typeof cfg.trigger === "string" ? document.querySelector(cfg.trigger) : cfg.trigger;
+      if (!triggerEl) return;
+      var wasInview = false;
+      createInviewObserver(
+        triggerEl,
+        { threshold: [0, 0.12, 0.3], rootMargin: "0px 0px -10% 0px" },
+        function (entry) {
+          if (entry.isIntersecting && !wasInview) {
+            wasInview = true;
+            gsap.set(chars, { yPercent: 112, opacity: 0 });
+            tl.restart();
+            return;
+          }
+          if (!entry.isIntersecting) {
+            if (cfg.onEnterBack === false && entry.boundingClientRect.top < 0) return;
+            wasInview = false;
+          }
+        }
+      );
     });
   }
 
@@ -790,14 +667,7 @@
       });
     }
 
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 74%",
-        toggleActions: "play none none reset",
-        invalidateOnRefresh: true,
-      },
-    });
+    var tl = gsap.timeline({ paused: true });
 
     tl.to([kicker, titleRow].filter(Boolean), {
       y: 0,
@@ -843,6 +713,37 @@
         "-=0.34"
       );
     }
+
+    var entered = false;
+    createInviewObserver(
+      section,
+      { threshold: [0, 0.18, 0.35], rootMargin: "0px 0px -16% 0px" },
+      function (entry) {
+        if (entry.isIntersecting && !entered) {
+          entered = true;
+          tl.restart();
+          return;
+        }
+        if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+          entered = false;
+          tl.pause(0);
+          gsap.set([kicker, titleRow].filter(Boolean), { y: 34, opacity: 0 });
+          gsap.set(chars, { yPercent: 112, opacity: 0 });
+          gsap.set(texts, { y: 34, opacity: 0 });
+          if (cta) {
+            gsap.set(cta, {
+              x: function () {
+                return isTabletOrDown() ? 0 : -34;
+              },
+              y: function () {
+                return isTabletOrDown() ? 34 : 0;
+              },
+              opacity: 0,
+            });
+          }
+        }
+      }
+    );
   }
 
   /** Contact 톤을 가져온 절제된 리빌 (Work intro / Footer) */
@@ -855,14 +756,7 @@
       gsap.set(footerTitles, { y: 28, opacity: 0 });
       gsap.set(footerBodies, { y: 28, opacity: 0 });
 
-      var footerTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".site-footer",
-          start: "top 96%",
-          toggleActions: "play none none reset",
-          invalidateOnRefresh: true,
-        },
-      });
+      var footerTl = gsap.timeline({ paused: true });
 
       footerTl.to(footerTitles, {
         keyframes: [
@@ -882,12 +776,35 @@
         },
         "-=0.1"
       );
+
+      var footer = document.querySelector(".site-footer");
+      if (!footer) return;
+      var entered = false;
+      createInviewObserver(
+        footer,
+        { threshold: [0, 0.1, 0.24], rootMargin: "0px 0px -6% 0px" },
+        function (entry) {
+          if (entry.isIntersecting && !entered) {
+            entered = true;
+            footerTl.restart();
+            return;
+          }
+          if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            entered = false;
+            footerTl.pause(0);
+            gsap.set(footerTitles, { y: 28, opacity: 0 });
+            gsap.set(footerBodies, { y: 28, opacity: 0 });
+          }
+        }
+      );
     }
   }
 
   /** Work: 세로 스크롤 시 섹션 핀 + 카드 트랙 가로 이동 */
   function initWorkHorizontalScroll() {
     var WORK_END_EXTRA = 18;
+    var WORK_PIN_LEAD_HOLD = 260;
+    var WORK_PIN_TAIL_HOLD = 340;
 
     if (prefersReducedMotion) return;
     var section = document.querySelector(".work-section");
@@ -907,16 +824,17 @@
       return Math.max(0, track.scrollWidth - viewport.offsetWidth + viewportLeadInset() + WORK_END_EXTRA);
     }
 
+    section.classList.remove("work-section--native-pin");
+    section.style.removeProperty("--work-scroll-span");
+    track.style.removeProperty("transform");
+    viewport.style.removeProperty("transform");
+
     function verticalScrollForPin() {
       var ms = maxShift();
-      return ms > 0 ? ms : 400;
+      return (ms > 0 ? ms : 400) + WORK_PIN_LEAD_HOLD + WORK_PIN_TAIL_HOLD;
     }
 
-    var trackTween = gsap.to(track, {
-      x: function () {
-        return -maxShift();
-      },
-      ease: "none",
+    var trackTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
@@ -931,6 +849,29 @@
         refreshPriority: -1,
       },
     });
+
+    trackTl
+      .to(track, {
+        x: 0,
+        duration: WORK_PIN_LEAD_HOLD,
+        ease: "none",
+      })
+      .to(track, {
+        x: function () {
+          return -maxShift();
+        },
+        duration: function () {
+          return Math.max(1, maxShift());
+        },
+        ease: "none",
+      })
+      .to(track, {
+        x: function () {
+          return -maxShift();
+        },
+        duration: WORK_PIN_TAIL_HOLD,
+        ease: "none",
+      });
 
     gsap.fromTo(
       viewport,

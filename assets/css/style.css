@@ -617,6 +617,38 @@ body.site-menu-open {
   overflow: hidden;
 }
 
+/* 스크롤 전환 비활성화: 패널을 일반 문서 흐름으로 전환 */
+.hero-pinned.hero-pinned--static {
+  height: auto;
+  overflow: visible;
+}
+
+.hero-pinned.hero-pinned--static .hero-panels {
+  height: auto;
+}
+
+.hero-pinned.hero-pinned--static .hero-panel {
+  position: relative;
+  inset: auto;
+  height: auto;
+  min-height: 0;
+}
+
+.hero-pinned.hero-pinned--static .hero-panel--1 {
+  height: 100vh;
+}
+
+.hero-pinned.hero-pinned--static .hero-panel--2 {
+  z-index: 2;
+  height: auto;
+}
+
+@media (min-width: 901px) {
+  .hero-pinned.hero-pinned--static .hero-panel--2 {
+    height: 100vh;
+  }
+}
+
 .hero-panel--1 {
   z-index: 2;
 }
