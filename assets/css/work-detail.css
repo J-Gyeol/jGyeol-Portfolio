@@ -701,6 +701,20 @@ html[data-theme="light"] .ns-btn--ghost:focus-visible {
   border-radius: 8px;
 }
 
+.ns-shot-group {
+  margin: 2rem 0 0.35rem;
+  font-family: var(--font-en);
+  font-size: clamp(0.75rem, calc(0.7rem + 0.2vw), 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ns-shot-group:first-of-type {
+  margin-top: 1.25rem;
+}
+
 .ns-shot {
   margin: 1.35rem 0 0;
   padding: 0;
