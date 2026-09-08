@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" class="site-scroll--light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design — jGyeol's Portfolio</title>
+  <meta name="description" content="용도와 작업별로 정리한 디자인 작업입니다. AI, 이미지, 인쇄물, 퍼블리싱, 설문조사를 구분했습니다." />
+  <link rel="canonical" href="https://j-gyeol.github.io/jGyeol-Portfolio/design/" />
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260908-archive" />
+  <link rel="stylesheet" href="../assets/css/archive.css?v=20260908-type" />
+  <link rel="stylesheet" href="../assets/css/design-gallery.css?v=20260908-fabric-gap" />
+</head>
+
+<body class="archive-page" data-root="../">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <div class="site-header-wrap site-header--on-light">
+    <header class="site-header site-header--bar" role="banner">
+      <div class="site-header__row site-header__row--main">
+        <h1>
+          <a class="site-header__brand" href="../index.html" aria-label="홈으로">jGyeol's Portfolio.</a>
+        </h1>
+        <a class="site-header__email" href="mailto:gyeol.hn.k@gmail.com">gyeol.hn.k@gmail.com</a>
+        <button type="button" class="site-header__menu-trigger" id="site-menu-trigger" aria-expanded="false"
+          aria-controls="site-menu-panel" aria-haspopup="dialog">
+          <span class="site-header__status" aria-hidden="true">
+            <span class="site-header__status-dot"></span>
+          </span>
+          <span class="site-header__menu-label">Available Now</span>
+          <span class="site-header__menu-arrow" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 10l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <div class="site-menu-backdrop" id="site-menu-backdrop" tabindex="-1" aria-hidden="true" hidden></div>
+    <div class="site-menu-panel" id="site-menu-panel" role="dialog" aria-modal="true"
+      aria-labelledby="site-menu-heading" hidden>
+      <h2 id="site-menu-heading" class="visually-hidden">주요 메뉴</h2>
+      <nav class="site-menu" aria-label="주요 메뉴">
+        <ol class="site-menu__list">
+          <li>
+            <a class="site-menu__link" href="../index.html#home">
+              <span class="site-menu__num">01</span>
+              <span class="site-menu__text">Home</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="../index.html#about">
+              <span class="site-menu__num">02</span>
+              <span class="site-menu__text">About</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="../index.html#skill">
+              <span class="site-menu__num">03</span>
+              <span class="site-menu__text">Skill</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="../index.html#project">
+              <span class="site-menu__num">04</span>
+              <span class="site-menu__text">Selected</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="./" aria-current="page">
+              <span class="site-menu__num">05</span>
+              <span class="site-menu__text">Design</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="../publishing/index.html">
+              <span class="site-menu__num">06</span>
+              <span class="site-menu__text">Publishing</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-menu__link" href="../index.html#contact">
+              <span class="site-menu__num">07</span>
+              <span class="site-menu__text">Contact</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main" class="archive-main">
+    <div class="archive-shell">
+      <header class="archive-intro">
+        <p class="archive-kicker">Portfolio</p>
+        <div class="archive-head">
+          <h1 class="archive-title">DESIGN</h1>
+          <p class="archive-count"><span data-work-count>0</span> works</p>
+        </div>
+        <p class="archive-lead">
+          용도와 작업 순서대로 배치했습니다. 이미지를 누르면 크게 볼 수 있습니다.
+        </p>
+        <nav class="archive-switch" aria-label="포트폴리오 구분">
+          <a class="archive-switch__link" href="./" aria-current="page">Design</a>
+          <a class="archive-switch__link" href="../publishing/index.html">Publishing</a>
+        </nav>
+        <nav class="archive-switch design-purpose-nav" data-design-nav aria-label="디자인 용도"></nav>
+      </header>
+      <div class="design-gallery" data-design-gallery></div>
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="푸터">
+    <div class="site-footer__inner">
+      <div class="site-footer__left">
+        <p class="site-footer__label">Github from</p>
+        <a class="site-footer__link" href="https://github.com/J-Gyeol" target="_blank" rel="noopener noreferrer">
+          https://github.com/J-Gyeol
+        </a>
+      </div>
+      <div class="site-footer__center">
+        <p class="site-footer__madeby">Made by jGyeol with</p>
+        <p class="site-footer__copy">ⓒ 2026 Portfolio</p>
+      </div>
+      <div class="site-footer__spacer" aria-hidden="true"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <dialog class="design-lightbox" data-design-lightbox aria-label="디자인 이미지 크게 보기">
+    <button type="button" class="design-lightbox__close" data-lightbox-close aria-label="닫기">×</button>
+    <button type="button" class="design-lightbox__nav design-lightbox__nav--prev" data-lightbox-prev aria-label="이전 이미지">‹</button>
+    <button type="button" class="design-lightbox__nav design-lightbox__nav--next" data-lightbox-next aria-label="다음 이미지">›</button>
+    <figure class="design-lightbox__figure">
+      <img class="design-lightbox__image" data-lightbox-image alt="" />
+      <figcaption class="design-lightbox__caption" data-lightbox-caption></figcaption>
+    </figure>
+  </dialog>
+
+  <script src="../assets/js/design-gallery.js?v=20260908-iglink"></script>
+  <script src="../assets/js/main.js?v=20260422-hero6"></script>
+</body>
+
+</html>

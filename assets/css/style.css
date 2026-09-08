@@ -464,7 +464,8 @@ body.hero-panel-1--hover.mouse-orb-hover .mouse-orb {
   border-radius: 16px;
   /* border: 1px solid rgba(0, 0, 0, 0.06); */
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
+  max-height: calc(100vh - var(--header-h) - 1.25rem);
+  overflow: auto;
 }
 
 .site-menu__list {
@@ -2073,6 +2074,44 @@ body.site-menu-open {
   line-height: 1.05;
   letter-spacing: 0.08em;
   color: var(--work-text);
+}
+
+.work-card__badge {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-en);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8ec4b0;
+}
+
+.work-section__archives {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.15rem;
+}
+
+.work-section__archive {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(61, 107, 90, 0.35);
+  color: var(--about-text);
+  text-decoration: none;
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.work-section__archive:hover,
+.work-section__archive:focus-visible {
+  border-color: var(--indie-green);
+  color: var(--indie-green);
 }
 
 .work-section__lead {
