@@ -13,7 +13,7 @@
           layout: "instagram",
           link: "https://www.instagram.com/fotton_style/",
           linkLabel: "피드 바로가기",
-          profile: { src: "AI/AI_인스타그램.png", alt: "인스타그램 프로필" },
+          profile: { src: "AI/AI_인스타그램.webp", alt: "인스타그램 프로필" },
           feeds: [
             { title: "피드 01", theme: "테일러링 · 요트 · 바다", images: feedShots(["1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3"]) },
             { title: "피드 02", theme: "리넨 · 테니스 · 아틀리에", images: feedShots(["4-1", "4-2", "4-3", "4-4", "4-5", "4-6", "5-1", "5-2", "5-3"]) },
@@ -50,30 +50,30 @@
         {
           title: "배너",
           layout: "pair",
-          images: [graphic("이미지_배너1.png", "배너 1"), graphic("이미지_배너2.png", "배너 2")],
+          images: [graphic("이미지_배너1.webp", "배너 1"), graphic("이미지_배너2.webp", "배너 2")],
         },
         {
           title: "프로모션",
           groups: [
             {
               title: "프로모션",
-              wide: [graphic("이미지_프로모션3.png", "프로모션 3")],
+              wide: [graphic("이미지_프로모션3.webp", "프로모션 3")],
               images: [1, 2, 4].map(function (n) {
-                return graphic("이미지_프로모션" + n + ".png", "프로모션 " + n);
+                return graphic("이미지_프로모션" + n + ".webp", "프로모션 " + n);
               }),
             },
             {
               title: "가격표",
               images: [
-                graphic("이미지_프로모션가격표.png", "프로모션 가격표"),
-                graphic("이미지_패키지가격표.png", "패키지 가격표"),
+                graphic("이미지_프로모션가격표.webp", "프로모션 가격표"),
+                graphic("이미지_패키지가격표.webp", "패키지 가격표"),
               ],
             },
             {
               title: "문자/이벤트 이미지",
               images: [
-                graphic("이미지_문자용.png", "문자용 이미지"),
-                graphic("이미지_플래너시상.png", "플래너 시상"),
+                graphic("이미지_문자용.webp", "문자용 이미지"),
+                graphic("이미지_플래너시상.webp", "플래너 시상"),
               ],
             },
           ],
@@ -82,9 +82,9 @@
           title: "추석 휴무 피드",
           layout: "feed",
           images: [
-            graphic("이미지_피드추석휴무1.png", "추석 휴무 피드 1"),
-            graphic("이미지_피드추석휴무2.png", "추석 휴무 피드 2"),
-            graphic("이미지_피드추석휴무3.jpg", "추석 휴무 피드 3"),
+            graphic("이미지_피드추석휴무1.webp", "추석 휴무 피드 1"),
+            graphic("이미지_피드추석휴무2.webp", "추석 휴무 피드 2"),
+            graphic("이미지_피드추석휴무3.webp", "추석 휴무 피드 3"),
           ],
         },
         {
@@ -95,16 +95,75 @@
               title: "수정 전",
               layout: "cards",
               images: [1, 2, 3, 4, 5].map(function (n) {
-                return graphic("이미지_프로모션수정전" + n + ".png", "프로모션 수정 전 " + n);
+                return graphic("이미지_프로모션수정전" + n + ".webp", "프로모션 수정 전 " + n);
               }),
             },
             {
               title: "수정 후",
               layout: "cards",
               images: [1, 2, 3, 4, 5].map(function (n) {
-                return graphic("이미지_프로모션수정후" + n + ".png", "프로모션 수정 후 " + n);
+                return graphic("이미지_프로모션수정후" + n + ".webp", "프로모션 수정 후 " + n);
               }),
             },
+          ],
+        },
+      ],
+    },
+    {
+      id: "personal",
+      title: "PERSONAL",
+      lead: "개인 작업물입니다. 그래픽 디자인, 포스터, 테마, 로고로 나눴습니다.",
+      works: [
+        {
+          title: "그래픽 디자인",
+          layout: "pair",
+          images: [1, 2, 3].map(function (n) {
+            return privateImg("header_" + n + ".webp", "그래픽 디자인 " + n);
+          }),
+        },
+        {
+          title: "포스터",
+          layout: "portrait",
+          images: [3, 4, 5, 6, 7].map(function (n) {
+            return privateImg("poster_" + n + ".webp", "포스터 " + n);
+          }),
+        },
+        {
+          title: "테마",
+          groups: [
+            {
+              title: "테마 01",
+              theme: "편집 · 타이포 · 레이아웃",
+              layout: "portrait",
+              images: [1, 2].map(function (n) {
+                return privateImg("theme1_" + n + ".webp", "테마 01-" + n);
+              }),
+            },
+            {
+              title: "테마 02",
+              theme: "용 · 먹 · 구름",
+              layout: "portrait",
+              images: [1, 2, 3, 4].map(function (n) {
+                return privateImg("theme2_" + n + ".webp", "테마 02-" + n);
+              }),
+            },
+            {
+              title: "테마 03",
+              theme: "포스터 · 아포칼립스 · 무드",
+              layout: "portrait",
+              images: [1, 2, 3].map(function (n) {
+                return privateImg("theme3_" + n + ".webp", "테마 03-" + n);
+              }),
+            },
+          ],
+        },
+        {
+          title: "로고",
+          layout: "portrait",
+          images: [
+            logoImg("logo_1.webp", "로고 1"),
+            logoImg("logo_2.webp", "로고 2"),
+            Object.assign(logoImg("logo-company-2.webp", "로고 3"), { inset: true }),
           ],
         },
       ],
@@ -117,7 +176,20 @@
         {
           title: "박람회 부채",
           layout: "wide",
-          images: [{ src: "print/인쇄물_박람회부채.png", alt: "박람회 부채" }],
+          images: [{ src: "print/인쇄물_박람회부채.webp", alt: "박람회 부채" }],
+        },
+        {
+          title: "CD",
+          layout: "pair",
+          images: [{ src: "print/인쇄물_cd1.webp", alt: "CD 1" }],
+        },
+        {
+          title: "폰케이스",
+          layout: "pair",
+          images: [
+            { src: "print/인쇄물_폰케이스1.webp", alt: "폰케이스 1" },
+            { src: "print/인쇄물_폰케이스2.webp", alt: "폰케이스 2" },
+          ],
         },
       ],
     },
@@ -131,14 +203,14 @@
           layout: "wide",
           link: "https://www.fottongarment.co.kr/",
           linkLabel: "홈페이지 바로가기",
-          images: [{ src: "publishing/퍼블리싱_1홈페이지배너.png", alt: "홈페이지 배너" }],
+          images: [{ src: "publishing/퍼블리싱_1홈페이지배너.webp", alt: "홈페이지 배너" }],
         },
         {
           title: "사이즈표",
           layout: "wide",
           link: "https://www.fottongarment.co.kr/product/list_rental.html?cate_no=84",
           linkLabel: "사이즈표 바로가기",
-          images: [{ src: "publishing/퍼블리싱_사이즈표.png", alt: "사이즈표" }],
+          images: [{ src: "publishing/퍼블리싱_사이즈표.webp", alt: "사이즈표" }],
         },
       ],
     },
@@ -152,14 +224,14 @@
         {
           title: "사이트 분석",
           layout: "wide",
-          images: [{ src: "survey/설문조사_1사이트분석.png", alt: "설문 사이트 분석" }],
+          images: [{ src: "survey/설문조사_1사이트분석.webp", alt: "설문 사이트 분석" }],
         },
         {
           title: "메인",
           layout: "wide",
           images: [
-            { src: "survey/설문조사_2메인.png", alt: "설문 메인" },
-            { src: "survey/설문조사_3항목.png", alt: "설문 항목" },
+            { src: "survey/설문조사_2메인.webp", alt: "설문 메인" },
+            { src: "survey/설문조사_3항목.webp", alt: "설문 항목" },
           ],
         },
       ],
@@ -170,18 +242,26 @@
     return { src: "design_img/" + file, alt: alt };
   }
 
+  function privateImg(file, alt) {
+    return { src: "design_img/private/" + file, alt: alt };
+  }
+
+  function logoImg(file, alt) {
+    return { src: "logo/" + file, alt: alt };
+  }
+
   function feedShots(names) {
     return names.map(function (name) {
-      return { src: "AI/" + name + ".png", alt: "인스타그램 " + name };
+      return { src: "AI/" + name + ".webp", alt: "인스타그램 " + name };
     });
   }
 
   function fabricThumb(n) {
-    return { src: "AI/원단/AI_원단썸네일" + n + ".png", alt: "원단 썸네일 " + n };
+    return { src: "AI/원단/AI_원단썸네일" + n + ".webp", alt: "원단 썸네일 " + n };
   }
 
   function fabricReel() {
-    return { src: "AI/원단/AI_릴스썸네일.png", alt: "원단 릴스 썸네일" };
+    return { src: "AI/원단/AI_릴스썸네일.webp", alt: "원단 릴스 썸네일" };
   }
 
   function fabricRange(from, to) {
@@ -190,7 +270,7 @@
     var i;
     for (n = from; n <= to; n += 1) {
       for (i = 1; i <= 3; i += 1) {
-        images.push({ src: "AI/원단/AI_원단" + n + "_" + i + ".png", alt: "원단 " + n + "-" + i });
+        images.push({ src: "AI/원단/AI_원단" + n + "_" + i + ".webp", alt: "원단 " + n + "-" + i });
       }
     }
     return images;
@@ -212,7 +292,9 @@
 
   function imageButton(image, groupId, index) {
     return (
-      '<button type="button" class="design-shot" data-group="' +
+      '<button type="button" class="design-shot' +
+      (image.inset ? " design-shot--inset" : "") +
+      '" data-group="' +
       esc(groupId) +
       '" data-index="' +
       index +
@@ -286,12 +368,15 @@
     return (
       '<details class="design-fold design-group">' +
       '<summary class="design-fold__summary">' +
+      '<span class="design-feed__label">' +
       '<span class="design-group__title">' +
       esc(group.title) +
       "</span>" +
-      '<span class="design-fold__count">' +
-      count +
+      (group.theme ? '<span class="design-feed__theme">' + esc(group.theme) + "</span>" : "") +
       "</span>" +
+      (group.theme
+        ? ""
+        : '<span class="design-fold__count">' + count + "</span>") +
       "</summary>" +
       '<div class="design-fold__body">' +
       orientedHtml(group, groupId) +

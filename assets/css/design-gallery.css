@@ -319,6 +319,11 @@
   height: auto;
 }
 
+.design-shot--inset {
+  padding: 14%;
+  background: transparent;
+}
+
 .design-compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -422,6 +427,10 @@
   .design-grid--frame,
   .design-grid--pair,
   .design-grid--portrait {
+    grid-template-columns: 1fr;
+  }
+
+  .design-grid--portrait:has(> :nth-child(2):last-child) {
     grid-template-columns: 1fr;
   }
 
